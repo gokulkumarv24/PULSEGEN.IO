@@ -371,10 +371,11 @@ class StreamlitApp:
         # URL input methods with enhanced styling
         st.markdown("### 🎯 Choose Input Method")
         input_method = st.radio(
-            "",
+            "Choose how you want to provide URLs for analysis",
             ("🔗 Single URL", "📚 Multiple URLs", "📁 Upload URL list"),
             horizontal=True,
-            help="Select how you want to provide URLs for analysis"
+            help="Select how you want to provide URLs for analysis",
+            label_visibility="collapsed"
         )
         
         urls = []
@@ -382,7 +383,7 @@ class StreamlitApp:
         if input_method == "🔗 Single URL":
             st.markdown("#### Enter Documentation URL")
             url = st.text_input(
-                "",
+                "Enter documentation URL",
                 placeholder="https://help.example.com or https://docs.example.com",
                 help="Enter a single documentation website URL",
                 label_visibility="collapsed"
@@ -393,7 +394,7 @@ class StreamlitApp:
         elif input_method == "📚 Multiple URLs":
             st.markdown("#### Enter Multiple URLs")
             url_text = st.text_area(
-                "",
+                "Enter multiple URLs",
                 placeholder="https://help.example.com\nhttps://docs.example.com\nhttps://support.example.com",
                 height=150,
                 help="Enter URLs one per line",
@@ -405,7 +406,7 @@ class StreamlitApp:
         else:  # Upload URL list
             st.markdown("#### Upload URL List File")
             uploaded_file = st.file_uploader(
-                "",
+                "Upload URL list file",
                 type=['txt'],
                 help="Upload a text file with URLs, one per line",
                 label_visibility="collapsed"
@@ -501,7 +502,7 @@ class StreamlitApp:
                 start_processing = st.button(
                     "🚀 Start Extraction",
                     type="primary",
-                    use_container_width=True,
+                    width='stretch',
                     help="Begin analyzing the provided URLs"
                 )
             else:
@@ -530,7 +531,7 @@ class StreamlitApp:
                     data=download_data,
                     file_name=filename,
                     mime="application/json",
-                    use_container_width=True,
+                    width='stretch',
                     help="Download extraction results as JSON file"
                 )
             else:
@@ -552,7 +553,7 @@ class StreamlitApp:
             if st.session_state.extraction_results or st.session_state.scraped_pages:
                 clear_results = st.button(
                     "🗑️ Clear Results", 
-                    use_container_width=True,
+                    width='stretch',
                     help="Clear all results and start fresh"
                 )
                 if clear_results:
@@ -822,7 +823,7 @@ class StreamlitApp:
             # Enhanced display options
             st.markdown("### 🎨 Choose Display Format")
             display_format = st.radio(
-                "",
+                "Select display format for results",
                 ("🎯 Structured View", "💻 JSON View", "📋 Table View"),
                 horizontal=True,
                 help="Select how you want to view the extracted modules",
@@ -932,7 +933,7 @@ class StreamlitApp:
         
         if table_data:
             df = pd.DataFrame(table_data)
-            st.dataframe(df, use_container_width=True)
+            st.dataframe(df, width='stretch')
     
     def render_debug_section(self):
         """Render debug information section."""

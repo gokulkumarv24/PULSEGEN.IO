@@ -1,3 +1,0 @@
-# System packages for Streamlit Cloud
-# This project uses BeautifulSoup with built-in html.parser
-# No additional system packages required

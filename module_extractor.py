@@ -5,6 +5,10 @@ Module Extraction AI Agent - Command Line Interface
 This script extracts structured information from documentation websites,
 identifying key modules and submodules with detailed descriptions.
 
+Creator: Gokul Kumar V
+GitHub: https://github.com/gokulkumarv24
+LinkedIn: https://www.linkedin.com/in/gokul-kumar-v-236a24217
+
 Usage:
     python module_extractor.py --urls https://help.example.com
     python module_extractor.py --urls https://help.site1.com https://help.site2.com

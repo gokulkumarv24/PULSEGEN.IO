@@ -1,6 +1,15 @@
 """
-Streamlit web interface for the Module Extraction AI Agent.
-Provides a user-friendly interface for URL input and JSON output display.
+Module Extraction AI Agent - Streamlit Web Interface
+
+Advanced web application for extracting structured information from documentation websites.
+Features intelligent web scraping, AI-powered content analysis, and professional UI design.
+
+Creator: Gokul Kumar V
+GitHub: https://github.com/gokulkumarv24
+LinkedIn: https://www.linkedin.com/in/gokul-kumar-v-236a24217
+
+This application provides a user-friendly interface for URL input, real-time processing,
+and beautifully formatted JSON output display with advanced animations and interactions.
 """
 
 import streamlit as st
@@ -37,7 +46,7 @@ class StreamlitApp:
             initial_sidebar_state="expanded"
         )
         
-        # Add custom CSS for professional, classic styling
+        # Add custom CSS for advanced, creative professional styling
         st.markdown("""
         <style>
         /* Import Professional Typography */
@@ -45,141 +54,285 @@ class StreamlitApp:
         /* Import Font Awesome for professional icons */
         @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
         
+        /* Advanced Animations */
+        @keyframes slideInFromLeft {
+            0% { transform: translateX(-100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideInFromRight {
+            0% { transform: translateX(100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            0% { transform: translateY(30px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200px 0; }
+            100% { background-position: calc(200px + 100%) 0; }
+        }
+        
+        @keyframes rotateIcon {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-8px);
+            }
+            60% {
+                transform: translateY(-4px);
+            }
+        }
+        
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
         /* Global Styles - Clean & Professional */
         .main {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background-color: #fdfdfd;
+            background: linear-gradient(135deg, #fdfdfd 0%, #f8f9fa 100%);
             color: #1a1a1a;
         }
         
-        /* Professional Button Styles */
+        /* Advanced Interactive Cards */
+        .feature-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(44, 62, 80, 0.15);
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(44, 62, 80, 0.05), transparent);
+            transition: left 0.5s;
+        }
+        
+        .feature-card:hover::before {
+            left: 100%;
+        }
+        
+        /* Interactive Processing Animation */
+        .processing-animation {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .processing-animation::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 0%, rgba(44, 62, 80, 0.1) 50%, transparent 100%);
+            animation: shimmer 2s infinite;
+        }
+        
+        /* Professional Button Styles with Advanced Interactions */
         .stButton > button {
-            background: #2c3e50;
-            border: 1px solid #34495e;
-            border-radius: 4px;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            border: none;
+            border-radius: 8px;
             color: white;
             font-weight: 500;
             font-family: 'Inter', sans-serif;
             font-size: 14px;
-            padding: 0.6rem 1.5rem;
-            transition: all 0.2s ease;
-            box-shadow: 0 1px 3px rgba(44,62,80,0.12);
+            padding: 0.8rem 2rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(44,62,80,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stButton > button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .stButton > button:hover::before {
+            left: 100%;
         }
         
         .stButton > button:hover {
-            background: #34495e;
-            border-color: #2c3e50;
-            box-shadow: 0 2px 6px rgba(44,62,80,0.16);
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(44,62,80,0.3);
         }
         
         .stButton > button:active {
-            background: #1a252f;
-            box-shadow: 0 1px 2px rgba(44,62,80,0.2);
+            transform: translateY(0);
+            box-shadow: 0 4px 15px rgba(44,62,80,0.4);
         }
         
-        /* Progress Bar - Minimal & Clean */
+        /* Advanced Progress Bar */
         .stProgress > div > div > div {
-            background: #2c3e50;
-            border-radius: 2px;
+            background: linear-gradient(90deg, #3498db, #2980b9, #2c3e50);
+            background-size: 200% 200%;
+            animation: shimmer 2s ease-in-out infinite alternate;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(52, 152, 219, 0.3);
         }
         
-        /* Sidebar - Professional Styling */
+        /* Sidebar Advanced Styling */
         .css-1d391kg {
-            background: #f8f9fa;
-            border-right: 1px solid #e9ecef;
+            background: linear-gradient(180deg, #f8f9fa 0%, #ecf0f1 100%);
+            border-right: 3px solid #2c3e50;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
         }
         
-        /* Expander - Clean Design */
+        /* Advanced Expander */
         .streamlit-expanderHeader {
-            background: #ffffff;
-            border: 1px solid #e9ecef;
-            border-radius: 4px;
-            font-weight: 500;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
         
         .streamlit-expanderHeader:hover {
-            background: #f8f9fa;
-            border-color: #dee2e6;
-        }
-        
-        /* Cards - Subtle & Professional */
-        [data-testid="metric-container"] {
-            background: #ffffff;
-            border: 1px solid #e9ecef;
-            border-radius: 6px;
-            padding: 1.25rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-        
-        /* Code Blocks - Editor-style */
-        .stCodeBlock {
-            border: 1px solid #e1e4e8;
-            border-radius: 6px;
-            background: #f6f8fa;
-        }
-        
-        /* Form Elements - Professional */
-        .stTextInput > div > div > input {
-            border: 1px solid #d0d7de;
-            border-radius: 4px;
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            padding: 0.5rem 0.75rem;
-            background: #ffffff;
-        }
-        
-        .stTextInput > div > div > input:focus {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             border-color: #2c3e50;
-            box-shadow: 0 0 0 2px rgba(44,62,80,0.08);
-            outline: none;
+            transform: scale(1.01);
+            box-shadow: 0 5px 15px rgba(44,62,80,0.1);
         }
         
+        /* Advanced Metric Cards */
+        [data-testid="metric-container"] {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        [data-testid="metric-container"]:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+            border-color: #2c3e50;
+        }
+        
+        [data-testid="metric-container"]::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #2980b9, #2c3e50);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        [data-testid="metric-container"]:hover::before {
+            transform: scaleX(1);
+        }
+        
+        /* Code Blocks - Advanced Editor Style */
+        .stCodeBlock {
+            border: 2px solid #e1e4e8;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f6f8fa 0%, #ffffff 100%);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stCodeBlock::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #e74c3c, #f39c12, #2ecc71, #3498db);
+        }
+        
+        /* Form Elements - Advanced Professional */
+        .stTextInput > div > div > input,
         .stTextArea > div > div > textarea {
-            border: 1px solid #d0d7de;
-            border-radius: 4px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
             font-family: 'Inter', sans-serif;
             font-size: 14px;
-            padding: 0.75rem;
-            background: #ffffff;
-            line-height: 1.5;
+            padding: 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
         }
         
+        .stTextInput > div > div > input:focus,
         .stTextArea > div > div > textarea:focus {
             border-color: #2c3e50;
-            box-shadow: 0 0 0 2px rgba(44,62,80,0.08);
+            box-shadow: 0 0 0 3px rgba(44,62,80,0.1), inset 0 2px 4px rgba(0,0,0,0.05);
             outline: none;
+            transform: scale(1.01);
         }
         
-        /* Select Boxes */
-        .stSelectbox > div > div {
-            border: 1px solid #d0d7de;
-            border-radius: 4px;
-            background: #ffffff;
-        }
-        
-        /* Radio Buttons - Clean */
-        .stRadio > div {
-            background: transparent;
-            border: none;
-            padding: 0;
-        }
-        
-        /* File Uploader */
-        .stFileUploader {
-            border: 1px dashed #d0d7de;
-            border-radius: 4px;
-            background: #f6f8fa;
-        }
-        
-        /* Alert Messages - Professional */
+        /* Advanced Alert Messages */
         .stAlert {
-            border-radius: 4px;
-            border: 1px solid;
+            border-radius: 12px;
+            border: none;
             font-family: 'Inter', sans-serif;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
         }
         
-        .stAlert[data-baseweb="notification"] {
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        .stAlert::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: currentColor;
         }
         
         /* Hide Streamlit Branding */
@@ -187,23 +340,27 @@ class StreamlitApp:
         footer {visibility: hidden;}
         .stDeployButton {display:none;}
         
-        /* Professional Scrollbar */
+        /* Advanced Professional Scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
+            width: 12px;
+            height: 12px;
         }
         
         ::-webkit-scrollbar-track {
-            background: #f1f3f4;
+            background: linear-gradient(180deg, #f1f3f4 0%, #e8eaf6 100%);
+            border-radius: 10px;
         }
         
         ::-webkit-scrollbar-thumb {
-            background: #c1c1c1;
-            border-radius: 4px;
+            background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+            border-radius: 10px;
+            border: 2px solid #f1f3f4;
+            transition: all 0.3s ease;
         }
         
         ::-webkit-scrollbar-thumb:hover {
-            background: #a8a8a8;
+            background: linear-gradient(180deg, #34495e 0%, #2c3e50 100%);
+            border-color: #e8eaf6;
         }
         
         /* Typography Improvements */
@@ -211,40 +368,86 @@ class StreamlitApp:
             font-family: 'Crimson Text', Georgia, serif;
             color: #1a1a1a;
             font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
         
-        /* Clean spacing */
+        /* Advanced Layout */
         .block-container {
             padding-top: 2rem;
             padding-bottom: 2rem;
             max-width: 1200px;
+            animation: fadeInUp 0.8s ease-out;
         }
         
         /* Professional Tables */
         .dataframe {
-            border: 1px solid #e1e4e8;
-            border-radius: 6px;
+            border: 2px solid #e1e4e8;
+            border-radius: 12px;
             font-family: 'Inter', sans-serif;
             font-size: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
         
-        /* Tab Styling */
+        /* Advanced Tab Styling */
         .stTabs [data-baseweb="tab-list"] {
-            gap: 2px;
+            gap: 4px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 4px;
+            border-radius: 12px;
         }
         
         .stTabs [data-baseweb="tab"] {
-            background: #f6f8fa;
-            border: 1px solid #e1e4e8;
-            border-radius: 4px 4px 0 0;
-            color: #586069;
+            background: transparent;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            color: #6c757d;
             font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .stTabs [data-baseweb="tab"]:hover {
+            background: rgba(44, 62, 80, 0.05);
+            color: #2c3e50;
         }
         
         .stTabs [aria-selected="true"] {
-            background: #ffffff;
-            border-bottom-color: #ffffff;
-            color: #1a1a1a;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            border-color: #2c3e50;
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(44,62,80,0.3);
+        }
+        
+        /* Loading Animation */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #2c3e50;
+            border-radius: 50%;
+            animation: rotateIcon 1s linear infinite;
+        }
+        
+        /* Success Checkmark Animation */
+        .checkmark {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #2ecc71;
+            position: relative;
+        }
+        
+        .checkmark::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
         }
         </style>
         """, unsafe_allow_html=True)
@@ -260,119 +463,304 @@ class StreamlitApp:
     
     def render_header(self):
         """Render the application header."""
-        # Professional, clean header design
+        # Advanced, creative header design
         st.markdown("""
         <div style="
-            background: #ffffff;
-            border-bottom: 2px solid #2c3e50;
-            padding: 3rem 2rem 2rem 2rem;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
+            background-size: 200% 200%;
+            animation: shimmer 3s ease-in-out infinite alternate;
+            padding: 4rem 2rem 3rem 2rem;
             margin-bottom: 2rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 25px 25px;
+            box-shadow: 0 10px 30px rgba(44,62,80,0.3);
         ">
+            <div style="
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+                background-size: 50px 50px;
+                animation: slideInFromLeft 2s ease-out;
+                opacity: 0.1;
+            "></div>
+            <!-- Floating particles effect -->
+            <div style="
+                position: absolute;
+                top: 20%;
+                left: 10%;
+                width: 4px;
+                height: 4px;
+                background: #3498db;
+                border-radius: 50%;
+                animation: float 3s ease-in-out infinite;
+                opacity: 0.7;
+            "></div>
+            <div style="
+                position: absolute;
+                top: 60%;
+                right: 15%;
+                width: 3px;
+                height: 3px;
+                background: #2ecc71;
+                border-radius: 50%;
+                animation: float 4s ease-in-out infinite reverse;
+                opacity: 0.6;
+            "></div>
+            <div style="
+                position: absolute;
+                top: 40%;
+                left: 80%;
+                width: 2px;
+                height: 2px;
+                background: #f39c12;
+                border-radius: 50%;
+                animation: float 2.5s ease-in-out infinite;
+                opacity: 0.8;
+            "></div>
             <h1 style="
-                color: #2c3e50;
+                color: #ffffff;
                 font-family: 'Crimson Text', Georgia, serif;
-                font-size: 2.8rem;
-                font-weight: 600;
+                font-size: 3.5rem;
+                font-weight: 700;
                 margin-bottom: 0.5rem;
                 letter-spacing: -0.02em;
+                text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+                animation: fadeInUp 1s ease-out;
+                position: relative;
+                z-index: 2;
             ">PULSEGEN.IO</h1>
+            <div style="
+                width: 100px;
+                height: 3px;
+                background: linear-gradient(90deg, #3498db, #ffffff, #3498db);
+                margin: 1rem auto;
+                border-radius: 2px;
+                animation: shimmer 2s infinite;
+            "></div>
             <h2 style="
-                color: #34495e;
+                color: #ecf0f1;
                 font-family: 'Inter', sans-serif;
-                font-size: 1.1rem;
-                font-weight: 400;
+                font-size: 1.2rem;
+                font-weight: 500;
                 margin-bottom: 1.5rem;
                 text-transform: uppercase;
-                letter-spacing: 0.1em;
+                letter-spacing: 0.2em;
+                animation: slideInFromRight 1.2s ease-out;
+                position: relative;
+                z-index: 2;
             ">Module Extraction AI Agent</h2>
             <p style="
-                color: #7f8c8d;
+                color: #bdc3c7;
                 font-family: 'Inter', sans-serif;
-                font-size: 1rem;
+                font-size: 1.1rem;
                 margin: 0 auto;
-                max-width: 600px;
-                line-height: 1.6;
+                max-width: 700px;
+                line-height: 1.7;
+                animation: fadeInUp 1.4s ease-out;
+                position: relative;
+                z-index: 2;
             ">
+                <i class="fas fa-magic" style="margin-right: 8px; color: #3498db;"></i>
                 Extract structured information from documentation websites using advanced artificial intelligence.
-                <br>Analyze help documentation and identify key modules with intelligent descriptions.
+                <br>
+                <i class="fas fa-cogs" style="margin-right: 8px; color: #e74c3c;"></i>
+                Analyze help documentation and identify key modules with intelligent descriptions.
             </p>
         </div>
         """, unsafe_allow_html=True)
         
-        # Clean feature highlights
+        # Advanced interactive feature highlights
+        st.markdown("""
+        <div style="margin: 2rem 0; animation: fadeInUp 0.8s ease-out 0.5s both;">
+        """, unsafe_allow_html=True)
+        
         col1, col2, col3, col4 = st.columns(4)
         with col1:
             st.markdown("""
-            <div style="
+            <div class="feature-card" style="
                 text-align: center; 
-                padding: 1.5rem 1rem; 
-                background: #ffffff; 
-                border: 1px solid #e9ecef; 
-                border-radius: 4px;
+                padding: 2rem 1.5rem; 
+                background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); 
+                border: 2px solid #e9ecef; 
+                border-radius: 15px;
                 margin: 0.5rem 0;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+                cursor: pointer;
             ">
-                <div style="font-size: 1.5rem; margin-bottom: 0.75rem; color: #2c3e50;">
+                <div style="
+                    font-size: 2rem; 
+                    margin-bottom: 1rem; 
+                    color: #2c3e50;
+                    transition: all 0.3s ease;
+                    animation: pulse 2s infinite;
+                ">
                     <i class="fas fa-search"></i>
                 </div>
-                <h4 style="margin: 0; font-size: 0.9rem; font-weight: 600; color: #2c3e50;">SMART CRAWLING</h4>
-                <p style="margin: 0.25rem 0 0 0; font-size: 0.8rem; color: #7f8c8d;">Intelligent web scraping</p>
+                <h4 style="
+                    margin: 0 0 0.5rem 0; 
+                    font-size: 1rem; 
+                    font-weight: 700; 
+                    color: #2c3e50;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                ">SMART CRAWLING</h4>
+                <p style="
+                    margin: 0; 
+                    font-size: 0.85rem; 
+                    color: #7f8c8d;
+                    line-height: 1.5;
+                ">Intelligent web scraping with advanced algorithms</p>
+                <div style="
+                    width: 30px;
+                    height: 2px;
+                    background: linear-gradient(90deg, #3498db, #2980b9);
+                    margin: 0.75rem auto 0;
+                    border-radius: 1px;
+                "></div>
             </div>
             """, unsafe_allow_html=True)
         
         with col2:
             st.markdown("""
-            <div style="
+            <div class="feature-card" style="
                 text-align: center; 
-                padding: 1.5rem 1rem; 
-                background: #ffffff; 
-                border: 1px solid #e9ecef; 
-                border-radius: 4px;
+                padding: 2rem 1.5rem; 
+                background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); 
+                border: 2px solid #e9ecef; 
+                border-radius: 15px;
                 margin: 0.5rem 0;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+                cursor: pointer;
+                animation-delay: 0.1s;
             ">
-                <div style="font-size: 1.5rem; margin-bottom: 0.75rem; color: #2c3e50;">
+                <div style="
+                    font-size: 2rem; 
+                    margin-bottom: 1rem; 
+                    color: #2c3e50;
+                    transition: all 0.3s ease;
+                ">
                     <i class="fas fa-brain"></i>
                 </div>
-                <h4 style="margin: 0; font-size: 0.9rem; font-weight: 600; color: #2c3e50;">AI ANALYSIS</h4>
-                <p style="margin: 0.25rem 0 0 0; font-size: 0.8rem; color: #7f8c8d;">Advanced language models</p>
+                <h4 style="
+                    margin: 0 0 0.5rem 0; 
+                    font-size: 1rem; 
+                    font-weight: 700; 
+                    color: #2c3e50;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                ">AI ANALYSIS</h4>
+                <p style="
+                    margin: 0; 
+                    font-size: 0.85rem; 
+                    color: #7f8c8d;
+                    line-height: 1.5;
+                ">Advanced language models & pattern recognition</p>
+                <div style="
+                    width: 30px;
+                    height: 2px;
+                    background: linear-gradient(90deg, #e74c3c, #c0392b);
+                    margin: 0.75rem auto 0;
+                    border-radius: 1px;
+                "></div>
             </div>
             """, unsafe_allow_html=True)
         
         with col3:
             st.markdown("""
-            <div style="
+            <div class="feature-card" style="
                 text-align: center; 
-                padding: 1.5rem 1rem; 
-                background: #ffffff; 
-                border: 1px solid #e9ecef; 
-                border-radius: 4px;
+                padding: 2rem 1.5rem; 
+                background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); 
+                border: 2px solid #e9ecef; 
+                border-radius: 15px;
                 margin: 0.5rem 0;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+                cursor: pointer;
+                animation-delay: 0.2s;
             ">
-                <div style="font-size: 1.5rem; margin-bottom: 0.75rem; color: #2c3e50;">
+                <div style="
+                    font-size: 2rem; 
+                    margin-bottom: 1rem; 
+                    color: #2c3e50;
+                    transition: all 0.3s ease;
+                ">
                     <i class="fas fa-chart-bar"></i>
                 </div>
-                <h4 style="margin: 0; font-size: 0.9rem; font-weight: 600; color: #2c3e50;">STRUCTURED OUTPUT</h4>
-                <p style="margin: 0.25rem 0 0 0; font-size: 0.8rem; color: #7f8c8d;">JSON format results</p>
+                <h4 style="
+                    margin: 0 0 0.5rem 0; 
+                    font-size: 1rem; 
+                    font-weight: 700; 
+                    color: #2c3e50;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                ">STRUCTURED OUTPUT</h4>
+                <p style="
+                    margin: 0; 
+                    font-size: 0.85rem; 
+                    color: #7f8c8d;
+                    line-height: 1.5;
+                ">JSON format results with hierarchical data</p>
+                <div style="
+                    width: 30px;
+                    height: 2px;
+                    background: linear-gradient(90deg, #f39c12, #e67e22);
+                    margin: 0.75rem auto 0;
+                    border-radius: 1px;
+                "></div>
             </div>
             """, unsafe_allow_html=True)
         
         with col4:
             st.markdown("""
-            <div style="
+            <div class="feature-card" style="
                 text-align: center; 
-                padding: 1.5rem 1rem; 
-                background: #ffffff; 
-                border: 1px solid #e9ecef; 
-                border-radius: 4px;
+                padding: 2rem 1.5rem; 
+                background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); 
+                border: 2px solid #e9ecef; 
+                border-radius: 15px;
                 margin: 0.5rem 0;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+                cursor: pointer;
+                animation-delay: 0.3s;
             ">
-                <div style="font-size: 1.5rem; margin-bottom: 0.75rem; color: #2c3e50;">
+                <div style="
+                    font-size: 2rem; 
+                    margin-bottom: 1rem; 
+                    color: #2c3e50;
+                    transition: all 0.3s ease;
+                ">
                     <i class="fas fa-bolt"></i>
                 </div>
-                <h4 style="margin: 0; font-size: 0.9rem; font-weight: 600; color: #2c3e50;">REAL-TIME</h4>
-                <p style="margin: 0.25rem 0 0 0; font-size: 0.8rem; color: #7f8c8d;">Instant processing</p>
+                <h4 style="
+                    margin: 0 0 0.5rem 0; 
+                    font-size: 1rem; 
+                    font-weight: 700; 
+                    color: #2c3e50;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                ">REAL-TIME</h4>
+                <p style="
+                    margin: 0; 
+                    font-size: 0.85rem; 
+                    color: #7f8c8d;
+                    line-height: 1.5;
+                ">Instant processing with live progress tracking</p>
+                <div style="
+                    width: 30px;
+                    height: 2px;
+                    background: linear-gradient(90deg, #2ecc71, #27ae60);
+                    margin: 0.75rem auto 0;
+                    border-radius: 1px;
+                "></div>
             </div>
             """, unsafe_allow_html=True)
+        
+        st.markdown("</div>", unsafe_allow_html=True)
     
     def render_sidebar(self):
         """Render the sidebar with configuration options."""
@@ -509,34 +897,124 @@ class StreamlitApp:
     
     def render_input_section(self):
         """Render the URL input section."""
-        # Clean, professional section header
+        # Advanced, creative section header with animations
         st.markdown("""
         <div style="
-            background: #ffffff;
-            border: 1px solid #e9ecef;
-            border-left: 4px solid #2c3e50;
-            padding: 2rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
+            border: 2px solid #e9ecef;
+            border-left: 6px solid #3498db;
+            border-radius: 15px;
+            padding: 2.5rem;
             margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
         ">
-            <h2 style="
-                margin: 0 0 0.5rem 0;
-                color: #2c3e50;
-                font-family: 'Crimson Text', Georgia, serif;
-                font-size: 1.8rem;
-                font-weight: 600;
-            ">Input Documentation URLs</h2>
+            <div style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                background: linear-gradient(90deg, #3498db, #2ecc71, #f39c12, #e74c3c);
+                background-size: 400% 100%;
+                animation: shimmer 3s linear infinite;
+            "></div>
+            <div style="
+                display: flex;
+                align-items: center;
+                margin-bottom: 1.5rem;
+                animation: slideInFromLeft 0.8s ease-out;
+            ">
+                <div style="
+                    font-size: 2.5rem;
+                    color: #3498db;
+                    margin-right: 15px;
+                    animation: rotateIcon 4s linear infinite;
+                ">
+                    <i class="fas fa-link"></i>
+                </div>
+                <div>
+                    <h2 style="
+                        margin: 0;
+                        color: #2c3e50;
+                        font-family: 'Crimson Text', Georgia, serif;
+                        font-size: 2rem;
+                        font-weight: 700;
+                        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                    ">Input Documentation URLs</h2>
+                    <div style="
+                        width: 60px;
+                        height: 2px;
+                        background: linear-gradient(90deg, #3498db, #2ecc71);
+                        margin-top: 8px;
+                        border-radius: 1px;
+                        animation: pulse 2s infinite;
+                    "></div>
+                </div>
+            </div>
             <p style="
                 margin: 0;
-                color: #7f8c8d;
+                color: #6c757d;
                 font-family: 'Inter', sans-serif;
-                font-size: 1rem;
-                line-height: 1.5;
-            ">Provide documentation websites for intelligent module extraction and analysis</p>
+                font-size: 1.1rem;
+                line-height: 1.7;
+                animation: fadeInUp 1s ease-out 0.3s both;
+            ">
+                <i class="fas fa-magic" style="color: #e74c3c; margin-right: 8px;"></i>
+                Provide documentation websites for intelligent module extraction and AI-powered analysis
+            </p>
         </div>
         """, unsafe_allow_html=True)
         
-        # URL input methods with clean styling
-        st.markdown("### Input Method Selection")
+        # Enhanced input method selection with creative styling
+        st.markdown("""
+        <div style="margin: 2rem 0;">
+            <h3 style="
+                color: #2c3e50;
+                font-family: 'Crimson Text', Georgia, serif;
+                font-size: 1.5rem;
+                font-weight: 600;
+                text-align: center;
+                margin-bottom: 1.5rem;
+            ">
+                <i class="fas fa-cogs" style="color: #f39c12; margin-right: 10px;"></i>
+                Input Method Selection
+            </h3>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Custom radio button styling
+        st.markdown("""
+        <style>
+            .stRadio > div {
+                display: flex;
+                justify-content: center;
+                gap: 2rem;
+                margin: 2rem 0;
+            }
+            
+            .stRadio > div > label {
+                background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+                border: 2px solid #e9ecef;
+                border-radius: 12px;
+                padding: 1rem 1.5rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                min-width: 150px;
+                text-align: center;
+            }
+            
+            .stRadio > div > label:hover {
+                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+                border-color: #3498db;
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(52, 152, 219, 0.2);
+            }
+        </style>
+        """, unsafe_allow_html=True)
+        
         input_method = st.radio(
             "Choose how you want to provide URLs for analysis",
             ("Single URL", "Multiple URLs", "Upload URL List"),
@@ -547,7 +1025,52 @@ class StreamlitApp:
         urls = []
         
         if input_method == "Single URL":
-            st.markdown("#### Documentation URL")
+            st.markdown("""
+            <div style="
+                background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+                padding: 2rem;
+                border-radius: 15px;
+                border: 2px solid #e9ecef;
+                margin: 1.5rem 0;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            ">
+                <h4 style="
+                    color: #2c3e50;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    margin-bottom: 1rem;
+                    text-align: center;
+                ">
+                    <i class="fas fa-globe" style="color: #3498db; margin-right: 8px;"></i>
+                    Documentation URL
+                </h4>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            # Enhanced input styling
+            st.markdown("""
+            <style>
+                .stTextInput > div > div > input {
+                    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+                    border: 2px solid #e9ecef !important;
+                    border-radius: 12px !important;
+                    padding: 1rem !important;
+                    font-size: 1rem !important;
+                    color: #2c3e50 !important;
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+                    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
+                }
+                
+                .stTextInput > div > div > input:focus {
+                    border-color: #3498db !important;
+                    box-shadow: 0 6px 25px rgba(52, 152, 219, 0.2), 0 0 0 3px rgba(52, 152, 219, 0.1) !important;
+                    transform: translateY(-2px) scale(1.01) !important;
+                    background: #ffffff !important;
+                }
+            </style>
+            """, unsafe_allow_html=True)
+            
             url = st.text_input(
                 "Enter documentation URL",
                 placeholder="https://help.example.com or https://docs.example.com",
@@ -558,7 +1081,53 @@ class StreamlitApp:
                 urls = [url]
                 
         elif input_method == "Multiple URLs":
-            st.markdown("#### Multiple Documentation URLs")
+            st.markdown("""
+            <div style="
+                background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+                padding: 2rem;
+                border-radius: 15px;
+                border: 2px solid #e9ecef;
+                margin: 1.5rem 0;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            ">
+                <h4 style="
+                    color: #2c3e50;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    margin-bottom: 1rem;
+                    text-align: center;
+                ">
+                    <i class="fas fa-list" style="color: #2ecc71; margin-right: 8px;"></i>
+                    Multiple Documentation URLs
+                </h4>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            # Enhanced textarea styling
+            st.markdown("""
+            <style>
+                .stTextArea > div > div > textarea {
+                    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+                    border: 2px solid #e9ecef !important;
+                    border-radius: 12px !important;
+                    padding: 1rem !important;
+                    font-size: 1rem !important;
+                    color: #2c3e50 !important;
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+                    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
+                    font-family: 'Inter', monospace !important;
+                }
+                
+                .stTextArea > div > div > textarea:focus {
+                    border-color: #2ecc71 !important;
+                    box-shadow: 0 6px 25px rgba(46, 204, 113, 0.2), 0 0 0 3px rgba(46, 204, 113, 0.1) !important;
+                    transform: scale(1.01) !important;
+                    background: #ffffff !important;
+                }
+            </style>
+            """, unsafe_allow_html=True)
+            
             url_text = st.text_area(
                 "Enter multiple URLs",
                 placeholder="https://help.example.com\nhttps://docs.example.com\nhttps://support.example.com",
@@ -570,7 +1139,49 @@ class StreamlitApp:
                 urls = [url.strip() for url in url_text.split('\n') if url.strip()]
         
         else:  # Upload URL list
-            st.markdown("#### Upload URL List")
+            st.markdown("""
+            <div style="
+                background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+                padding: 2rem;
+                border-radius: 15px;
+                border: 2px solid #e9ecef;
+                margin: 1.5rem 0;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            ">
+                <h4 style="
+                    color: #2c3e50;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    margin-bottom: 1rem;
+                    text-align: center;
+                ">
+                    <i class="fas fa-upload" style="color: #f39c12; margin-right: 8px;"></i>
+                    Upload URL List
+                </h4>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            # Enhanced file uploader styling
+            st.markdown("""
+            <style>
+                .stFileUploader > div {
+                    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+                    border: 2px dashed #e9ecef !important;
+                    border-radius: 12px !important;
+                    padding: 2rem !important;
+                    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
+                }
+                
+                .stFileUploader > div:hover {
+                    border-color: #f39c12 !important;
+                    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%) !important;
+                    transform: scale(1.01) !important;
+                    box-shadow: 0 8px 25px rgba(243, 156, 18, 0.1) !important;
+                }
+            </style>
+            """, unsafe_allow_html=True)
+            
             uploaded_file = st.file_uploader(
                 "Upload URL list file",
                 type=['txt'],
@@ -580,7 +1191,7 @@ class StreamlitApp:
             if uploaded_file:
                 urls = [url.strip() for url in uploaded_file.read().decode().split('\n') if url.strip()]
         
-        # URL validation with clean presentation
+        # Enhanced URL validation with creative presentation
         if urls:
             valid_urls = []
             invalid_urls = []
@@ -591,64 +1202,146 @@ class StreamlitApp:
                 else:
                     invalid_urls.append(url)
             
-            # Show validation results
-            col1, col2 = st.columns(2)
-            
-            with col1:
-                if valid_urls:
-                    st.markdown(f"""
-                    <div style="
-                        background: #d4edda;
-                        border: 1px solid #c3e6cb;
-                        border-radius: 4px;
-                        padding: 1rem;
-                        margin: 0.5rem 0;
-                    ">
-                        <h4 style="color: #155724; margin: 0 0 0.25rem 0; font-size: 1rem;">
-                            <i class="fas fa-check-circle"></i> Valid URLs ({len(valid_urls)})
-                        </h4>
-                        <p style="color: #155724; margin: 0; font-size: 0.9rem;">Ready for processing</p>
-                    </div>
-                    """, unsafe_allow_html=True)
-            
-            with col2:
-                if invalid_urls:
-                    st.markdown(f"""
-                    <div style="
-                        background: #f8d7da;
-                        border: 1px solid #f5c6cb;
-                        border-radius: 4px;
-                        padding: 1rem;
-                        margin: 0.5rem 0;
-                    ">
-                        <h4 style="color: #721c24; margin: 0 0 0.25rem 0; font-size: 1rem;">
-                            <i class="fas fa-exclamation-circle"></i> Invalid URLs ({len(invalid_urls)})
-                        </h4>
-                        <p style="color: #721c24; margin: 0; font-size: 0.9rem;">Please verify format</p>
-                    </div>
-                    """, unsafe_allow_html=True)
-            
-            # Show URL list in clean format
+            # Advanced validation display
             if valid_urls:
-                with st.expander(f"Review URLs ({len(valid_urls)} valid)", expanded=False):
+                st.markdown("""
+                <div style="
+                    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+                    border: 2px solid #28a745;
+                    border-radius: 12px;
+                    padding: 1.5rem;
+                    margin: 1rem 0;
+                    animation: fadeInUp 0.5s ease-out;
+                ">
+                    <h5 style="
+                        color: #155724;
+                        font-family: 'Inter', sans-serif;
+                        font-weight: 600;
+                        margin-bottom: 1rem;
+                    ">
+                        <i class="fas fa-check-circle" style="margin-right: 8px;"></i>
+                        Valid URLs Found: {}
+                    </h5>
+                </div>
+                """.format(len(valid_urls)), unsafe_allow_html=True)
+                
+                # Show valid URLs with advanced styling
+                with st.expander("View Valid URLs", expanded=False):
                     for i, url in enumerate(valid_urls, 1):
                         st.markdown(f"""
                         <div style="
-                            background: #ffffff;
-                            border: 1px solid #e9ecef;
-                            border-left: 3px solid #2c3e50;
+                            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+                            border-left: 4px solid #28a745;
                             padding: 0.75rem 1rem;
-                            margin: 0.25rem 0;
-                            font-family: 'Inter', sans-serif;
+                            margin: 0.5rem 0;
+                            border-radius: 0 8px 8px 0;
+                            font-family: 'Inter', monospace;
+                            font-size: 0.9rem;
                         ">
-                            <strong style="color: #2c3e50;">{i}.</strong> 
-                            <a href="{url}" target="_blank" style="color: #2c3e50; text-decoration: none;">
-                                {url}
-                            </a>
+                            <strong>{i}.</strong> {url}
                         </div>
                         """, unsafe_allow_html=True)
+            
+            if invalid_urls:
+                st.markdown("""
+                <div style="
+                    background: linear-gradient(135deg, #f8d7da 0%, #f1b0b7 100%);
+                    border: 2px solid #dc3545;
+                    border-radius: 12px;
+                    padding: 1.5rem;
+                    margin: 1rem 0;
+                    animation: fadeInUp 0.5s ease-out;
+                ">
+                    <h5 style="
+                        color: #721c24;
+                        font-family: 'Inter', sans-serif;
+                        font-weight: 600;
+                        margin-bottom: 1rem;
+                    ">
+                        <i class="fas fa-exclamation-triangle" style="margin-right: 8px;"></i>
+                        Invalid URLs Found: {}
+                    </h5>
+                </div>
+                """.format(len(invalid_urls)), unsafe_allow_html=True)
+                
+                # Show invalid URLs
+                with st.expander("View Invalid URLs", expanded=False):
+                    for i, url in enumerate(invalid_urls, 1):
+                        st.markdown(f"""
+                        <div style="
+                            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+                            border-left: 4px solid #dc3545;
+                            padding: 0.75rem 1rem;
+                            margin: 0.5rem 0;
+                            border-radius: 0 8px 8px 0;
+                            font-family: 'Inter', monospace;
+                            font-size: 0.9rem;
+                            color: #721c24;
+                        ">
+                            <strong>{i}.</strong> {url}
+                        </div>
+                        """, unsafe_allow_html=True)
+            
+            # Advanced submit button section
+            if valid_urls:
+                st.markdown("<div style='margin: 2rem 0;'></div>", unsafe_allow_html=True)
+                
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    # Creative submit button
+                    st.markdown("""
+                    <style>
+                        .big-button {
+                            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%) !important;
+                            color: white !important;
+                            border: none !important;
+                            border-radius: 15px !important;
+                            padding: 1rem 2rem !important;
+                            font-size: 1.2rem !important;
+                            font-weight: 700 !important;
+                            text-transform: uppercase !important;
+                            letter-spacing: 0.1em !important;
+                            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.3) !important;
+                            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
+                            position: relative !important;
+                            overflow: hidden !important;
+                            width: 100% !important;
+                        }
+                        
+                        .big-button:hover {
+                            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%) !important;
+                            box-shadow: 0 12px 35px rgba(46, 204, 113, 0.4) !important;
+                            transform: translateY(-3px) scale(1.02) !important;
+                        }
+                        
+                        .big-button::before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: -100%;
+                            width: 100%;
+                            height: 100%;
+                            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+                            transition: left 0.5s;
+                        }
+                        
+                        .big-button:hover::before {
+                            left: 100%;
+                        }
+                    </style>
+                    """, unsafe_allow_html=True)
+                    
+                    if st.button(
+                        f"🚀 ANALYZE {len(valid_urls)} WEBSITE{'S' if len(valid_urls) > 1 else ''}",
+                        use_container_width=True,
+                        type="primary",
+                        key="analyze_button"
+                    ):
+                        return valid_urls
+            
+            return valid_urls if 'valid_urls' in locals() else []
         
-        return valid_urls if 'valid_urls' in locals() else []
+        return []
     
     def render_processing_section(self, urls, config):
         """Render the processing section with start button."""
@@ -1354,6 +2047,130 @@ class StreamlitApp:
                 Powered by advanced natural language processing and machine learning
             </p>
         </div>
+        """, unsafe_allow_html=True)
+        
+        # Professional Creator Contact Footer
+        st.markdown("""
+        <div style="
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-radius: 15px 15px 0 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        ">
+            <div style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                background: linear-gradient(90deg, #3498db, #2ecc71, #f39c12, #e74c3c);
+                background-size: 400% 100%;
+                animation: shimmer 3s linear infinite;
+            "></div>
+            <div style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 1.5rem;
+                animation: fadeInUp 1s ease-out;
+            ">
+                <div style="
+                    font-size: 2rem;
+                    margin-right: 15px;
+                    animation: pulse 2s infinite;
+                ">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div>
+                    <h3 style="
+                        margin: 0;
+                        color: #ecf0f1;
+                        font-family: 'Crimson Text', Georgia, serif;
+                        font-size: 1.5rem;
+                        font-weight: 600;
+                    ">Created by Gokul Kumar V</h3>
+                    <div style="
+                        width: 50px;
+                        height: 2px;
+                        background: linear-gradient(90deg, #3498db, #2ecc71);
+                        margin: 8px auto 0;
+                        border-radius: 1px;
+                        animation: pulse 2s infinite;
+                    "></div>
+                </div>
+            </div>
+            <div style="
+                display: flex;
+                justify-content: center;
+                gap: 2rem;
+                margin-bottom: 1.5rem;
+                animation: slideInFromLeft 1.2s ease-out;
+            ">
+                <a href="https://github.com/gokulkumarv24" target="_blank" style="
+                    display: flex;
+                    align-items: center;
+                    color: #ecf0f1;
+                    text-decoration: none;
+                    background: linear-gradient(135deg, #333, #444);
+                    padding: 0.75rem 1.5rem;
+                    border-radius: 10px;
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                    font-family: 'Inter', sans-serif;
+                    font-weight: 500;
+                ">
+                    <i class="fab fa-github" style="font-size: 1.2rem; margin-right: 8px;"></i>
+                    GitHub Profile
+                </a>
+                <a href="https://www.linkedin.com/in/gokul-kumar-v-236a24217" target="_blank" style="
+                    display: flex;
+                    align-items: center;
+                    color: #ecf0f1;
+                    text-decoration: none;
+                    background: linear-gradient(135deg, #0077b5, #005885);
+                    padding: 0.75rem 1.5rem;
+                    border-radius: 10px;
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                    font-family: 'Inter', sans-serif;
+                    font-weight: 500;
+                ">
+                    <i class="fab fa-linkedin" style="font-size: 1.2rem; margin-right: 8px;"></i>
+                    LinkedIn Profile
+                </a>
+            </div>
+            <p style="
+                margin: 0;
+                color: #bdc3c7;
+                font-family: 'Inter', sans-serif;
+                font-size: 0.9rem;
+                line-height: 1.6;
+                animation: fadeInUp 1.4s ease-out;
+            ">
+                <i class="fas fa-heart" style="color: #e74c3c; margin-right: 5px;"></i>
+                Passionate about AI, Machine Learning, and Building Intelligent Solutions
+                <br>
+                <i class="fas fa-envelope" style="color: #3498db; margin-right: 5px;"></i>
+                Connect with me for collaboration opportunities and project discussions
+            </p>
+        </div>
+        
+        <style>
+            /* Enhanced link hover effects */
+            a[href*="github.com"]:hover {
+                background: linear-gradient(135deg, #444, #555) !important;
+                transform: translateY(-2px) scale(1.05) !important;
+                box-shadow: 0 8px 25px rgba(0,0,0,0.3) !important;
+            }
+            
+            a[href*="linkedin.com"]:hover {
+                background: linear-gradient(135deg, #005885, #0077b5) !important;
+                transform: translateY(-2px) scale(1.05) !important;
+                box-shadow: 0 8px 25px rgba(0, 119, 181, 0.3) !important;
+            }
+        </style>
         """, unsafe_allow_html=True)
 
 def main():

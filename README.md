@@ -1,5 +1,10 @@
 # PULSEGEN.IO - Module Extraction AI Agent 🤖
 
+[![Created by Gokul Kumar V](https://img.shields.io/badge/Created%20by-Gokul%20Kumar%20V-blue?style=for-the-badge&logo=github)](https://github.com/gokulkumarv24)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/gokul-kumar-v-236a24217)
+[![AI Powered](https://img.shields.io/badge/AI%20Powered-OpenAI%20GPT-00A67E?style=for-the-badge&logo=openai)](https://openai.com)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?style=for-the-badge&logo=python)](https://python.org)
+
 A sophisticated AI-powered tool that extracts structured information from documentation websites. This tool automatically identifies key modules and submodules from help documentation and generates detailed descriptions based on the actual content.
 
 **🚀 PULSEGEN.IO Project**: Advanced AI-driven module extraction system designed for intelligent documentation analysis and structured data extraction.
@@ -414,7 +419,29 @@ This project follows best practices for code organization and documentation:
 
 This project is created for educational and evaluation purposes. Please ensure compliance with website terms of service when scraping documentation.
 
-## 🙋‍♂️ Support
+## �‍💻 Creator
+
+**Created by: Gokul Kumar V**
+
+- **GitHub**: [gokulkumarv24](https://github.com/gokulkumarv24)
+- **LinkedIn**: [Gokul Kumar V](https://www.linkedin.com/in/gokul-kumar-v-236a24217)
+
+> _Passionate about AI, Machine Learning, and Building Intelligent Solutions_
+
+### About the Developer
+
+Gokul Kumar V is the creator and lead developer of this Module Extraction AI Agent. With expertise in artificial intelligence, web development, and data processing, he's dedicated to building innovative solutions that bridge the gap between AI capabilities and real-world applications.
+
+**Core Expertise**:
+
+- AI & Machine Learning Integration
+- Modern Web Application Development
+- Natural Language Processing
+- Intelligent Data Extraction Systems
+
+For collaboration opportunities, technical discussions, or project inquiries, feel free to connect through the links above!
+
+## �🙋‍♂️ Support
 
 For issues or questions:
 
@@ -422,7 +449,10 @@ For issues or questions:
 2. Enable verbose logging to diagnose issues
 3. Test with the provided sample URLs first
 4. Ensure all dependencies are properly installed
+5. Reach out to the creator through GitHub or LinkedIn
 
 ---
 
 **Module Extraction AI Agent** - Turning unstructured documentation into structured insights with the power of AI! 🚀
+
+_Built with ❤️ by [Gokul Kumar V](https://github.com/gokulkumarv24)_

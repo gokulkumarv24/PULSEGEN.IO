@@ -37,125 +37,147 @@ class StreamlitApp:
             initial_sidebar_state="expanded"
         )
         
-        # Add custom CSS for enhanced styling and animations
+        # Add custom CSS for professional, classic styling
         st.markdown("""
         <style>
-        /* Import Google Fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        /* Import Professional Typography */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:wght@400;600&display=swap');
         
-        /* Global Styles */
+        /* Global Styles - Clean & Professional */
         .main {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #fdfdfd;
+            color: #1a1a1a;
         }
         
-        /* Animations */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        /* Custom Button Styles */
+        /* Professional Button Styles */
         .stButton > button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            border-radius: 10px;
+            background: #2c3e50;
+            border: 1px solid #34495e;
+            border-radius: 4px;
             color: white;
-            font-weight: 600;
-            font-family: 'Poppins', sans-serif;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102,126,234,0.3);
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            padding: 0.6rem 1.5rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 3px rgba(44,62,80,0.12);
         }
         
         .stButton > button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102,126,234,0.4);
+            background: #34495e;
+            border-color: #2c3e50;
+            box-shadow: 0 2px 6px rgba(44,62,80,0.16);
         }
         
-        /* Progress Bar Styling */
+        .stButton > button:active {
+            background: #1a252f;
+            box-shadow: 0 1px 2px rgba(44,62,80,0.2);
+        }
+        
+        /* Progress Bar - Minimal & Clean */
         .stProgress > div > div > div {
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            border-radius: 10px;
+            background: #2c3e50;
+            border-radius: 2px;
         }
         
-        /* Sidebar Styling */
+        /* Sidebar - Professional Styling */
         .css-1d391kg {
-            background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+            background: #f8f9fa;
+            border-right: 1px solid #e9ecef;
         }
         
-        /* Expander Styling */
+        /* Expander - Clean Design */
         .streamlit-expanderHeader {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 10px;
-            border: 1px solid #dee2e6;
+            background: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            font-weight: 500;
         }
         
-        /* Metric Cards Enhancement */
+        .streamlit-expanderHeader:hover {
+            background: #f8f9fa;
+            border-color: #dee2e6;
+        }
+        
+        /* Cards - Subtle & Professional */
         [data-testid="metric-container"] {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            border-radius: 15px;
-            padding: 1rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: #ffffff;
             border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 1.25rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
         
-        /* Code Block Styling */
+        /* Code Blocks - Editor-style */
         .stCodeBlock {
-            border-radius: 10px;
-            border: 1px solid #e9ecef;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            background: #f6f8fa;
         }
         
-        /* Text Input Styling */
+        /* Form Elements - Professional */
         .stTextInput > div > div > input {
-            border-radius: 10px;
-            border: 2px solid #e9ecef;
-            font-family: 'Poppins', sans-serif;
+            border: 1px solid #d0d7de;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            padding: 0.5rem 0.75rem;
+            background: #ffffff;
         }
         
         .stTextInput > div > div > input:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 0.2rem rgba(102,126,234,0.25);
+            border-color: #2c3e50;
+            box-shadow: 0 0 0 2px rgba(44,62,80,0.08);
+            outline: none;
         }
         
-        /* Text Area Styling */
         .stTextArea > div > div > textarea {
-            border-radius: 10px;
-            border: 2px solid #e9ecef;
-            font-family: 'Poppins', sans-serif;
+            border: 1px solid #d0d7de;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            padding: 0.75rem;
+            background: #ffffff;
+            line-height: 1.5;
         }
         
         .stTextArea > div > div > textarea:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 0.2rem rgba(102,126,234,0.25);
+            border-color: #2c3e50;
+            box-shadow: 0 0 0 2px rgba(44,62,80,0.08);
+            outline: none;
         }
         
-        /* File Uploader Styling */
-        .stFileUploader {
-            border-radius: 10px;
+        /* Select Boxes */
+        .stSelectbox > div > div {
+            border: 1px solid #d0d7de;
+            border-radius: 4px;
+            background: #ffffff;
         }
         
-        /* Radio Button Styling */
+        /* Radio Buttons - Clean */
         .stRadio > div {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 0.5rem;
+            background: transparent;
+            border: none;
+            padding: 0;
         }
         
-        /* Success/Error Message Styling */
+        /* File Uploader */
+        .stFileUploader {
+            border: 1px dashed #d0d7de;
+            border-radius: 4px;
+            background: #f6f8fa;
+        }
+        
+        /* Alert Messages - Professional */
         .stAlert {
-            border-radius: 10px;
-            border: none;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            border: 1px solid;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .stAlert[data-baseweb="notification"] {
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
         }
         
         /* Hide Streamlit Branding */
@@ -163,23 +185,64 @@ class StreamlitApp:
         footer {visibility: hidden;}
         .stDeployButton {display:none;}
         
-        /* Custom Scrollbar */
+        /* Professional Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
+            height: 8px;
         }
         
         ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 4px;
+            background: #f1f3f4;
         }
         
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #c1c1c1;
             border-radius: 4px;
         }
         
         ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            background: #a8a8a8;
+        }
+        
+        /* Typography Improvements */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Crimson Text', Georgia, serif;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+        
+        /* Clean spacing */
+        .block-container {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            max-width: 1200px;
+        }
+        
+        /* Professional Tables */
+        .dataframe {
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+        }
+        
+        /* Tab Styling */
+        .stTabs [data-baseweb="tab-list"] {
+            gap: 2px;
+        }
+        
+        .stTabs [data-baseweb="tab"] {
+            background: #f6f8fa;
+            border: 1px solid #e1e4e8;
+            border-radius: 4px 4px 0 0;
+            color: #586069;
+            font-weight: 500;
+        }
+        
+        .stTabs [aria-selected="true"] {
+            background: #ffffff;
+            border-bottom-color: #ffffff;
+            color: #1a1a1a;
         }
         </style>
         """, unsafe_allow_html=True)
@@ -195,150 +258,233 @@ class StreamlitApp:
     
     def render_header(self):
         """Render the application header."""
-        # Create an attractive header with gradient background effect
+        # Professional, clean header design
         st.markdown("""
         <div style="
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            padding: 2rem;
-            border-radius: 15px;
+            background: #ffffff;
+            border-bottom: 2px solid #2c3e50;
+            padding: 3rem 2rem 2rem 2rem;
             margin-bottom: 2rem;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         ">
             <h1 style="
-                color: white;
-                font-size: 2.5rem;
+                color: #2c3e50;
+                font-family: 'Crimson Text', Georgia, serif;
+                font-size: 2.8rem;
+                font-weight: 600;
                 margin-bottom: 0.5rem;
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            ">🤖 PULSEGEN.IO</h1>
+                letter-spacing: -0.02em;
+            ">PULSEGEN.IO</h1>
             <h2 style="
-                color: #f0f0f0;
-                font-size: 1.5rem;
-                margin-bottom: 1rem;
-                font-weight: 300;
+                color: #34495e;
+                font-family: 'Inter', sans-serif;
+                font-size: 1.1rem;
+                font-weight: 400;
+                margin-bottom: 1.5rem;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
             ">Module Extraction AI Agent</h2>
             <p style="
-                color: #e0e0e0;
-                font-size: 1.1rem;
-                margin: 0;
-                max-width: 800px;
+                color: #7f8c8d;
+                font-family: 'Inter', sans-serif;
+                font-size: 1rem;
                 margin: 0 auto;
+                max-width: 600px;
                 line-height: 1.6;
             ">
-                🚀 Extract structured information from documentation websites using advanced AI
-                <br>
-                ✨ Analyze help documentation and identify key modules with intelligent descriptions
+                Extract structured information from documentation websites using advanced artificial intelligence.
+                <br>Analyze help documentation and identify key modules with intelligent descriptions.
             </p>
         </div>
         """, unsafe_allow_html=True)
         
-        # Add feature highlights
+        # Clean feature highlights
         col1, col2, col3, col4 = st.columns(4)
         with col1:
             st.markdown("""
-            <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 10px; margin: 0.5rem 0;">
-                <h3 style="color: #667eea; margin: 0;">🔍</h3>
-                <p style="margin: 0.5rem 0 0 0; font-weight: 600;">Smart Crawling</p>
+            <div style="
+                text-align: center; 
+                padding: 1.5rem 1rem; 
+                background: #ffffff; 
+                border: 1px solid #e9ecef; 
+                border-radius: 4px;
+                margin: 0.5rem 0;
+            ">
+                <div style="font-size: 1.5rem; margin-bottom: 0.75rem; color: #2c3e50;">🔍</div>
+                <h4 style="margin: 0; font-size: 0.9rem; font-weight: 600; color: #2c3e50;">SMART CRAWLING</h4>
+                <p style="margin: 0.25rem 0 0 0; font-size: 0.8rem; color: #7f8c8d;">Intelligent web scraping</p>
             </div>
             """, unsafe_allow_html=True)
         
         with col2:
             st.markdown("""
-            <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 10px; margin: 0.5rem 0;">
-                <h3 style="color: #667eea; margin: 0;">🤖</h3>
-                <p style="margin: 0.5rem 0 0 0; font-weight: 600;">AI Analysis</p>
+            <div style="
+                text-align: center; 
+                padding: 1.5rem 1rem; 
+                background: #ffffff; 
+                border: 1px solid #e9ecef; 
+                border-radius: 4px;
+                margin: 0.5rem 0;
+            ">
+                <div style="font-size: 1.5rem; margin-bottom: 0.75rem; color: #2c3e50;">🤖</div>
+                <h4 style="margin: 0; font-size: 0.9rem; font-weight: 600; color: #2c3e50;">AI ANALYSIS</h4>
+                <p style="margin: 0.25rem 0 0 0; font-size: 0.8rem; color: #7f8c8d;">Advanced language models</p>
             </div>
             """, unsafe_allow_html=True)
         
         with col3:
             st.markdown("""
-            <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 10px; margin: 0.5rem 0;">
-                <h3 style="color: #667eea; margin: 0;">📊</h3>
-                <p style="margin: 0.5rem 0 0 0; font-weight: 600;">Structured Output</p>
+            <div style="
+                text-align: center; 
+                padding: 1.5rem 1rem; 
+                background: #ffffff; 
+                border: 1px solid #e9ecef; 
+                border-radius: 4px;
+                margin: 0.5rem 0;
+            ">
+                <div style="font-size: 1.5rem; margin-bottom: 0.75rem; color: #2c3e50;">📊</div>
+                <h4 style="margin: 0; font-size: 0.9rem; font-weight: 600; color: #2c3e50;">STRUCTURED OUTPUT</h4>
+                <p style="margin: 0.25rem 0 0 0; font-size: 0.8rem; color: #7f8c8d;">JSON format results</p>
             </div>
             """, unsafe_allow_html=True)
         
         with col4:
             st.markdown("""
-            <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 10px; margin: 0.5rem 0;">
-                <h3 style="color: #667eea; margin: 0;">⚡</h3>
-                <p style="margin: 0.5rem 0 0 0; font-weight: 600;">Real-time Results</p>
+            <div style="
+                text-align: center; 
+                padding: 1.5rem 1rem; 
+                background: #ffffff; 
+                border: 1px solid #e9ecef; 
+                border-radius: 4px;
+                margin: 0.5rem 0;
+            ">
+                <div style="font-size: 1.5rem; margin-bottom: 0.75rem; color: #2c3e50;">⚡</div>
+                <h4 style="margin: 0; font-size: 0.9rem; font-weight: 600; color: #2c3e50;">REAL-TIME</h4>
+                <p style="margin: 0.25rem 0 0 0; font-size: 0.8rem; color: #7f8c8d;">Instant processing</p>
             </div>
             """, unsafe_allow_html=True)
     
     def render_sidebar(self):
         """Render the sidebar with configuration options."""
         with st.sidebar:
-            # Attractive sidebar header
+            # Professional sidebar header
             st.markdown("""
             <div style="
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                background: #2c3e50;
+                color: #ffffff;
                 padding: 1.5rem;
-                border-radius: 10px;
-                margin-bottom: 1.5rem;
+                margin: -1rem -1rem 2rem -1rem;
                 text-align: center;
             ">
-                <h2 style="color: white; margin: 0; font-size: 1.5rem;">⚙️ Configuration</h2>
-                <p style="color: #e0e0e0; margin: 0.5rem 0 0 0; font-size: 0.9rem;">Customize your extraction</p>
+                <h3 style="
+                    margin: 0;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    letter-spacing: 0.05em;
+                ">CONFIGURATION</h3>
+                <p style="
+                    margin: 0.5rem 0 0 0;
+                    font-size: 0.8rem;
+                    opacity: 0.8;
+                    font-weight: 400;
+                ">Customize extraction settings</p>
             </div>
             """, unsafe_allow_html=True)
             
-            # Scraping settings with enhanced styling
+            # Scraping settings section
             st.markdown("""
-            <div style="
-                background: #f8f9fa;
-                padding: 1rem;
-                border-radius: 8px;
-                border-left: 4px solid #667eea;
-                margin-bottom: 1rem;
-            ">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1.1rem;">🔍 Scraping Settings</h3>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="
+                    margin: 0 0 1rem 0;
+                    color: #2c3e50;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.9rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                    border-bottom: 1px solid #e9ecef;
+                    padding-bottom: 0.5rem;
+                ">Web Scraping</h4>
             </div>
             """, unsafe_allow_html=True)
             
-            delay = st.slider("⏱️ Delay between requests", 0.5, 5.0, 1.0, 0.5, 
-                            help="Respectful crawling delay in seconds")
-            max_pages = st.slider("📄 Maximum pages to scrape", 10, 100, 30, 5,
-                               help="Limit the number of pages to process")
-            max_depth = st.slider("🌊 Maximum crawling depth", 1, 5, 2, 1,
-                                help="How deep to follow links from the starting URL")
+            delay = st.slider(
+                "Request delay (seconds)", 
+                0.5, 5.0, 1.0, 0.5, 
+                help="Delay between HTTP requests for respectful crawling"
+            )
+            max_pages = st.slider(
+                "Maximum pages", 
+                10, 100, 30, 5,
+                help="Limit the number of pages to process"
+            )
+            max_depth = st.slider(
+                "Crawling depth", 
+                1, 5, 2, 1,
+                help="Maximum depth to follow links from starting URL"
+            )
             
-            # AI settings with enhanced styling
+            # AI settings section
             st.markdown("""
-            <div style="
-                background: #f8f9fa;
-                padding: 1rem;
-                border-radius: 8px;
-                border-left: 4px solid #764ba2;
-                margin-bottom: 1rem;
-            ">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1.1rem;">🤖 AI Settings</h3>
+            <div style="margin: 2rem 0 1.5rem 0;">
+                <h4 style="
+                    margin: 0 0 1rem 0;
+                    color: #2c3e50;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.9rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                    border-bottom: 1px solid #e9ecef;
+                    padding-bottom: 0.5rem;
+                ">AI Processing</h4>
             </div>
             """, unsafe_allow_html=True)
             
-            use_openai = st.checkbox("✨ Use OpenAI API (Enhanced Results)", value=False,
-                                   help="Enable AI-powered analysis with OpenAI GPT")
+            use_openai = st.checkbox(
+                "Enable OpenAI API", 
+                value=False,
+                help="Use OpenAI GPT for enhanced analysis (optional)"
+            )
             openai_key = ""
             if use_openai:
-                openai_key = st.text_input("🔑 OpenAI API Key", type="password", 
-                                         help="Enter your OpenAI API key for enhanced analysis")
-                st.info("💡 **Tip**: The system works great even without an API key using intelligent fallback methods!")
+                openai_key = st.text_input(
+                    "OpenAI API Key", 
+                    type="password", 
+                    help="Enter your OpenAI API key"
+                )
+                st.info("💡 **Note**: Enhanced AI analysis with GPT models")
             else:
-                st.success("🎯 **Fallback Mode**: Uses advanced rule-based extraction - no API key needed!")
+                st.success("✓ **Default**: Advanced rule-based extraction (no API required)")
             
-            # Performance info
+            # Performance information
             st.markdown("""
             <div style="
-                background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+                background: #f8f9fa;
+                border: 1px solid #e9ecef;
+                border-radius: 4px;
                 padding: 1rem;
-                border-radius: 8px;
-                margin-top: 1rem;
+                margin-top: 2rem;
             ">
-                <h4 style="margin: 0 0 0.5rem 0; color: #8b4513;">📊 Performance Tips</h4>
-                <ul style="margin: 0; padding-left: 1.2rem; color: #8b4513; font-size: 0.9rem;">
-                    <li>Lower delay = faster crawling</li>
-                    <li>Higher depth = more comprehensive</li>
-                    <li>OpenAI API = better descriptions</li>
+                <h5 style="
+                    margin: 0 0 0.75rem 0;
+                    color: #495057;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.85rem;
+                    font-weight: 600;
+                ">Performance Guidelines</h5>
+                <ul style="
+                    margin: 0;
+                    padding-left: 1.2rem;
+                    color: #6c757d;
+                    font-size: 0.8rem;
+                    line-height: 1.5;
+                ">
+                    <li>Lower delay = faster processing</li>
+                    <li>Higher depth = more comprehensive analysis</li>
+                    <li>OpenAI API = enhanced descriptions</li>
+                    <li>Rule-based mode = consistent performance</li>
                 </ul>
             </div>
             """, unsafe_allow_html=True)
@@ -353,35 +499,45 @@ class StreamlitApp:
     
     def render_input_section(self):
         """Render the URL input section."""
-        # Attractive section header
+        # Clean, professional section header
         st.markdown("""
         <div style="
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            padding: 1.5rem;
-            border-radius: 15px;
+            background: #ffffff;
+            border: 1px solid #e9ecef;
+            border-left: 4px solid #2c3e50;
+            padding: 2rem;
             margin: 2rem 0;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         ">
-            <h2 style="margin: 0 0 0.5rem 0; color: #2c3e50; font-size: 1.8rem;">📝 Input URLs</h2>
-            <p style="margin: 0; color: #34495e; font-size: 1rem;">Add documentation websites to analyze</p>
+            <h2 style="
+                margin: 0 0 0.5rem 0;
+                color: #2c3e50;
+                font-family: 'Crimson Text', Georgia, serif;
+                font-size: 1.8rem;
+                font-weight: 600;
+            ">Input Documentation URLs</h2>
+            <p style="
+                margin: 0;
+                color: #7f8c8d;
+                font-family: 'Inter', sans-serif;
+                font-size: 1rem;
+                line-height: 1.5;
+            ">Provide documentation websites for intelligent module extraction and analysis</p>
         </div>
         """, unsafe_allow_html=True)
         
-        # URL input methods with enhanced styling
-        st.markdown("### 🎯 Choose Input Method")
+        # URL input methods with clean styling
+        st.markdown("### Input Method Selection")
         input_method = st.radio(
             "Choose how you want to provide URLs for analysis",
-            ("🔗 Single URL", "📚 Multiple URLs", "📁 Upload URL list"),
+            ("Single URL", "Multiple URLs", "Upload URL List"),
             horizontal=True,
-            help="Select how you want to provide URLs for analysis",
-            label_visibility="collapsed"
+            help="Select the input method for providing documentation URLs"
         )
         
         urls = []
         
-        if input_method == "🔗 Single URL":
-            st.markdown("#### Enter Documentation URL")
+        if input_method == "Single URL":
+            st.markdown("#### Documentation URL")
             url = st.text_input(
                 "Enter documentation URL",
                 placeholder="https://help.example.com or https://docs.example.com",
@@ -391,30 +547,30 @@ class StreamlitApp:
             if url:
                 urls = [url]
                 
-        elif input_method == "📚 Multiple URLs":
-            st.markdown("#### Enter Multiple URLs")
+        elif input_method == "Multiple URLs":
+            st.markdown("#### Multiple Documentation URLs")
             url_text = st.text_area(
                 "Enter multiple URLs",
                 placeholder="https://help.example.com\nhttps://docs.example.com\nhttps://support.example.com",
-                height=150,
-                help="Enter URLs one per line",
+                height=120,
+                help="Enter URLs, one per line",
                 label_visibility="collapsed"
             )
             if url_text:
                 urls = [url.strip() for url in url_text.split('\n') if url.strip()]
         
         else:  # Upload URL list
-            st.markdown("#### Upload URL List File")
+            st.markdown("#### Upload URL List")
             uploaded_file = st.file_uploader(
                 "Upload URL list file",
                 type=['txt'],
-                help="Upload a text file with URLs, one per line",
+                help="Upload a text file containing URLs, one per line",
                 label_visibility="collapsed"
             )
             if uploaded_file:
                 urls = [url.strip() for url in uploaded_file.read().decode().split('\n') if url.strip()]
         
-        # Enhanced URL validation with better visual feedback
+        # URL validation with clean presentation
         if urls:
             valid_urls = []
             invalid_urls = []
@@ -425,7 +581,7 @@ class StreamlitApp:
                 else:
                     invalid_urls.append(url)
             
-            # Show validation results with attractive styling
+            # Show validation results
             col1, col2 = st.columns(2)
             
             with col1:
@@ -434,12 +590,14 @@ class StreamlitApp:
                     <div style="
                         background: #d4edda;
                         border: 1px solid #c3e6cb;
-                        border-radius: 8px;
+                        border-radius: 4px;
                         padding: 1rem;
                         margin: 0.5rem 0;
                     ">
-                        <h4 style="color: #155724; margin: 0 0 0.5rem 0;">✅ Valid URLs ({len(valid_urls)})</h4>
-                        <p style="color: #155724; margin: 0; font-size: 0.9rem;">Ready for processing!</p>
+                        <h4 style="color: #155724; margin: 0 0 0.25rem 0; font-size: 1rem;">
+                            ✓ Valid URLs ({len(valid_urls)})
+                        </h4>
+                        <p style="color: #155724; margin: 0; font-size: 0.9rem;">Ready for processing</p>
                     </div>
                     """, unsafe_allow_html=True)
             
@@ -449,28 +607,34 @@ class StreamlitApp:
                     <div style="
                         background: #f8d7da;
                         border: 1px solid #f5c6cb;
-                        border-radius: 8px;
+                        border-radius: 4px;
                         padding: 1rem;
                         margin: 0.5rem 0;
                     ">
-                        <h4 style="color: #721c24; margin: 0 0 0.5rem 0;">❌ Invalid URLs ({len(invalid_urls)})</h4>
-                        <p style="color: #721c24; margin: 0; font-size: 0.9rem;">Please check format</p>
+                        <h4 style="color: #721c24; margin: 0 0 0.25rem 0; font-size: 1rem;">
+                            ✗ Invalid URLs ({len(invalid_urls)})
+                        </h4>
+                        <p style="color: #721c24; margin: 0; font-size: 0.9rem;">Please verify format</p>
                     </div>
                     """, unsafe_allow_html=True)
             
-            # Show URL list in an attractive format
+            # Show URL list in clean format
             if valid_urls:
-                with st.expander(f"👀 View URLs ({len(valid_urls)} valid)", expanded=False):
+                with st.expander(f"Review URLs ({len(valid_urls)} valid)", expanded=False):
                     for i, url in enumerate(valid_urls, 1):
                         st.markdown(f"""
                         <div style="
-                            background: #f8f9fa;
-                            border-left: 3px solid #667eea;
-                            padding: 0.5rem 1rem;
-                            margin: 0.2rem 0;
-                            border-radius: 0 5px 5px 0;
+                            background: #ffffff;
+                            border: 1px solid #e9ecef;
+                            border-left: 3px solid #2c3e50;
+                            padding: 0.75rem 1rem;
+                            margin: 0.25rem 0;
+                            font-family: 'Inter', sans-serif;
                         ">
-                            <strong>{i}.</strong> <a href="{url}" target="_blank" style="color: #667eea; text-decoration: none;">{url}</a>
+                            <strong style="color: #2c3e50;">{i}.</strong> 
+                            <a href="{url}" target="_blank" style="color: #2c3e50; text-decoration: none;">
+                                {url}
+                            </a>
                         </div>
                         """, unsafe_allow_html=True)
         
@@ -478,29 +642,38 @@ class StreamlitApp:
     
     def render_processing_section(self, urls, config):
         """Render the processing section with start button."""
-        # Attractive processing section header
+        # Clean processing section header
         st.markdown("""
         <div style="
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 1.5rem;
-            border-radius: 15px;
+            background: #ffffff;
+            border: 1px solid #e9ecef;
+            border-left: 4px solid #2c3e50;
+            padding: 2rem;
             margin: 2rem 0;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         ">
-            <h2 style="margin: 0 0 0.5rem 0; color: white; font-size: 1.8rem;">🚀 Processing Center</h2>
-            <p style="margin: 0; color: #e0e0e0; font-size: 1rem;">Start extraction or manage results</p>
+            <h2 style="
+                margin: 0 0 0.5rem 0;
+                color: #2c3e50;
+                font-family: 'Crimson Text', Georgia, serif;
+                font-size: 1.8rem;
+                font-weight: 600;
+            ">Processing Center</h2>
+            <p style="
+                margin: 0;
+                color: #7f8c8d;
+                font-family: 'Inter', sans-serif;
+                font-size: 1rem;
+            ">Execute extraction or manage results</p>
         </div>
         """, unsafe_allow_html=True)
         
-        # Enhanced action buttons
+        # Professional action buttons
         col1, col2, col3 = st.columns([1, 1, 1])
         
         with col1:
-            # Custom styled start button
             if urls:
                 start_processing = st.button(
-                    "🚀 Start Extraction",
+                    "Start Extraction",
                     type="primary",
                     width='stretch',
                     help="Begin analyzing the provided URLs"
@@ -508,14 +681,15 @@ class StreamlitApp:
             else:
                 st.markdown("""
                 <div style="
-                    background: #e9ecef;
+                    background: #f8f9fa;
                     color: #6c757d;
                     padding: 0.75rem;
-                    border-radius: 8px;
+                    border: 1px solid #e9ecef;
+                    border-radius: 4px;
                     text-align: center;
-                    border: 2px dashed #ced4da;
+                    font-family: 'Inter', sans-serif;
                 ">
-                    <strong>🚀 Start Extraction</strong><br>
+                    <strong>Start Extraction</strong><br>
                     <small>Add URLs first</small>
                 </div>
                 """, unsafe_allow_html=True)
@@ -523,11 +697,10 @@ class StreamlitApp:
         
         with col2:
             if st.session_state.extraction_results:
-                # Enhanced download button
                 download_data = json.dumps(st.session_state.extraction_results, indent=2)
                 filename = f"pulsegen_modules_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
                 st.download_button(
-                    "💾 Download JSON",
+                    "Download JSON",
                     data=download_data,
                     file_name=filename,
                     mime="application/json",
@@ -537,22 +710,23 @@ class StreamlitApp:
             else:
                 st.markdown("""
                 <div style="
-                    background: #e9ecef;
+                    background: #f8f9fa;
                     color: #6c757d;
                     padding: 0.75rem;
-                    border-radius: 8px;
+                    border: 1px solid #e9ecef;
+                    border-radius: 4px;
                     text-align: center;
-                    border: 2px dashed #ced4da;
+                    font-family: 'Inter', sans-serif;
                 ">
-                    <strong>💾 Download JSON</strong><br>
-                    <small>No results yet</small>
+                    <strong>Download JSON</strong><br>
+                    <small>No results available</small>
                 </div>
                 """, unsafe_allow_html=True)
         
         with col3:
             if st.session_state.extraction_results or st.session_state.scraped_pages:
                 clear_results = st.button(
-                    "🗑️ Clear Results", 
+                    "Clear Results", 
                     width='stretch',
                     help="Clear all results and start fresh"
                 )
@@ -560,19 +734,20 @@ class StreamlitApp:
                     st.session_state.extraction_results = None
                     st.session_state.processing_status = None
                     st.session_state.scraped_pages = []
-                    st.success("✅ Results cleared!")
+                    st.success("Results cleared successfully")
                     st.rerun()
             else:
                 st.markdown("""
                 <div style="
-                    background: #e9ecef;
+                    background: #f8f9fa;
                     color: #6c757d;
                     padding: 0.75rem;
-                    border-radius: 8px;
+                    border: 1px solid #e9ecef;
+                    border-radius: 4px;
                     text-align: center;
-                    border: 2px dashed #ced4da;
+                    font-family: 'Inter', sans-serif;
                 ">
-                    <strong>🗑️ Clear Results</strong><br>
+                    <strong>Clear Results</strong><br>
                     <small>Nothing to clear</small>
                 </div>
                 """, unsafe_allow_html=True)
@@ -585,18 +760,22 @@ class StreamlitApp:
         try:
             st.session_state.processing_status = "Starting..."
             
-            # Enhanced processing display with animations
+            # Professional processing display
             st.markdown("""
             <div style="
-                background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+                background: #f8f9fa;
+                border: 1px solid #e9ecef;
+                border-left: 4px solid #2c3e50;
                 padding: 1.5rem;
-                border-radius: 15px;
                 margin: 1rem 0;
                 text-align: center;
-                animation: pulse 2s infinite;
             ">
-                <h3 style="color: white; margin: 0;">🔄 Processing in Progress</h3>
-                <p style="color: #f0f0f0; margin: 0.5rem 0 0 0;">AI agents are analyzing your URLs...</p>
+                <h3 style="color: #2c3e50; margin: 0 0 0.5rem 0; font-family: 'Inter', sans-serif;">
+                    Processing in Progress
+                </h3>
+                <p style="color: #6c757d; margin: 0; font-size: 0.9rem;">
+                    Analyzing documentation URLs with AI agents...
+                </p>
             </div>
             """, unsafe_allow_html=True)
             
@@ -626,13 +805,17 @@ class StreamlitApp:
                     st.markdown("""
                     <div style="
                         background: #e3f2fd;
+                        border: 1px solid #2196f3;
                         border-left: 4px solid #2196f3;
                         padding: 1rem;
-                        border-radius: 0 8px 8px 0;
                         margin: 0.5rem 0;
                     ">
-                        <h4 style="margin: 0; color: #1976d2;">🔍 Step 1: Web Scraping</h4>
-                        <p style="margin: 0.5rem 0 0 0; color: #1976d2;">Crawling documentation websites...</p>
+                        <h4 style="margin: 0 0 0.25rem 0; color: #1976d2; font-family: 'Inter', sans-serif;">
+                            Step 1: Web Scraping
+                        </h4>
+                        <p style="margin: 0; color: #1976d2; font-size: 0.9rem;">
+                            Crawling documentation websites...
+                        </p>
                     </div>
                     """, unsafe_allow_html=True)
                 
@@ -651,13 +834,17 @@ class StreamlitApp:
                     st.markdown(f"""
                     <div style="
                         background: #f3e5f5;
+                        border: 1px solid #9c27b0;
                         border-left: 4px solid #9c27b0;
                         padding: 1rem;
-                        border-radius: 0 8px 8px 0;
                         margin: 0.5rem 0;
                     ">
-                        <h4 style="margin: 0; color: #7b1fa2;">📄 Step 2: Content Analysis</h4>
-                        <p style="margin: 0.5rem 0 0 0; color: #7b1fa2;">Found {len(scraped_pages)} pages, analyzing content structure...</p>
+                        <h4 style="margin: 0 0 0.25rem 0; color: #7b1fa2; font-family: 'Inter', sans-serif;">
+                            Step 2: Content Analysis
+                        </h4>
+                        <p style="margin: 0; color: #7b1fa2; font-size: 0.9rem;">
+                            Found {len(scraped_pages)} pages, analyzing content structure...
+                        </p>
                     </div>
                     """, unsafe_allow_html=True)
                 
@@ -672,13 +859,17 @@ class StreamlitApp:
                     st.markdown(f"""
                     <div style="
                         background: #e8f5e8;
+                        border: 1px solid #4caf50;
                         border-left: 4px solid #4caf50;
                         padding: 1rem;
-                        border-radius: 0 8px 8px 0;
                         margin: 0.5rem 0;
                     ">
-                        <h4 style="margin: 0; color: #388e3c;">🤖 Step 3: AI Module Extraction</h4>
-                        <p style="margin: 0.5rem 0 0 0; color: #388e3c;">Using {ai_mode} analysis to extract modules...</p>
+                        <h4 style="margin: 0 0 0.25rem 0; color: #388e3c; font-family: 'Inter', sans-serif;">
+                            Step 3: AI Module Extraction
+                        </h4>
+                        <p style="margin: 0; color: #388e3c; font-size: 0.9rem;">
+                            Using {ai_mode} analysis to extract modules...
+                        </p>
                     </div>
                     """, unsafe_allow_html=True)
                 
@@ -688,19 +879,23 @@ class StreamlitApp:
                 
                 progress_bar.progress(100)
                 
-                # Success message with animation
+                # Success message
                 status_placeholder.markdown("""
                 <div style="
-                    background: linear-gradient(135deg, #4caf50 0%, #8bc34a 100%);
+                    background: #d4edda;
+                    border: 1px solid #c3e6cb;
+                    border-left: 4px solid #28a745;
                     padding: 1.5rem;
-                    border-radius: 15px;
                     text-align: center;
-                    color: white;
-                    box-shadow: 0 4px 15px rgba(76,175,80,0.3);
-                    animation: fadeIn 0.5s ease-in;
+                    color: #155724;
+                    margin: 1rem 0;
                 ">
-                    <h3 style="margin: 0 0 0.5rem 0;">✅ Extraction Completed Successfully!</h3>
-                    <p style="margin: 0; opacity: 0.9;">Your modules have been extracted and are ready for review</p>
+                    <h3 style="margin: 0 0 0.5rem 0; font-family: 'Inter', sans-serif;">
+                        Extraction Completed Successfully
+                    </h3>
+                    <p style="margin: 0; font-size: 0.9rem;">
+                        Your modules have been extracted and are ready for review
+                    </p>
                 </div>
                 """, unsafe_allow_html=True)
             
@@ -709,7 +904,6 @@ class StreamlitApp:
             st.session_state.processing_status = "completed"
             
             # Auto-refresh to show results
-            st.balloons()  # Celebratory animation!
             st.rerun()
             
         except Exception as e:
@@ -735,24 +929,34 @@ class StreamlitApp:
     def render_results_section(self):
         """Render the results section."""
         if st.session_state.extraction_results:
-            # Attractive results header
+            # Professional results header
             st.markdown("""
             <div style="
-                background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+                background: #ffffff;
+                border: 1px solid #e9ecef;
+                border-left: 4px solid #2c3e50;
                 padding: 2rem;
-                border-radius: 20px;
                 margin: 2rem 0;
-                text-align: center;
-                box-shadow: 0 8px 25px rgba(255,154,158,0.3);
             ">
-                <h2 style="margin: 0 0 0.5rem 0; color: #2c3e50; font-size: 2rem;">📊 Extraction Results</h2>
-                <p style="margin: 0; color: #34495e; font-size: 1.1rem;">AI-powered analysis complete! Review your structured modules below</p>
+                <h2 style="
+                    margin: 0 0 0.5rem 0;
+                    color: #2c3e50;
+                    font-family: 'Crimson Text', Georgia, serif;
+                    font-size: 1.8rem;
+                    font-weight: 600;
+                ">Extraction Results</h2>
+                <p style="
+                    margin: 0;
+                    color: #7f8c8d;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 1rem;
+                ">AI-powered analysis complete. Review your structured modules below.</p>
             </div>
             """, unsafe_allow_html=True)
             
             results = st.session_state.extraction_results
             
-            # Enhanced summary metrics with attractive cards
+            # Professional summary metrics
             col1, col2, col3, col4 = st.columns(4)
             
             total_submodules = sum(len(module.get('Submodules', {})) for module in results)
@@ -761,104 +965,121 @@ class StreamlitApp:
             with col1:
                 st.markdown(f"""
                 <div style="
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    background: #ffffff;
+                    border: 1px solid #e9ecef;
                     padding: 1.5rem;
-                    border-radius: 15px;
                     text-align: center;
-                    color: white;
-                    box-shadow: 0 4px 15px rgba(102,126,234,0.3);
+                    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
                 ">
-                    <h1 style="margin: 0; font-size: 2.5rem;">{len(results)}</h1>
-                    <p style="margin: 0.5rem 0 0 0; opacity: 0.9;">Total Modules</p>
+                    <h1 style="margin: 0; font-size: 2rem; color: #2c3e50; font-family: 'Inter', sans-serif;">
+                        {len(results)}
+                    </h1>
+                    <p style="margin: 0.5rem 0 0 0; color: #7f8c8d; font-size: 0.9rem; font-weight: 500;">
+                        Total Modules
+                    </p>
                 </div>
                 """, unsafe_allow_html=True)
             
             with col2:
                 st.markdown(f"""
                 <div style="
-                    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+                    background: #ffffff;
+                    border: 1px solid #e9ecef;
                     padding: 1.5rem;
-                    border-radius: 15px;
                     text-align: center;
-                    color: white;
-                    box-shadow: 0 4px 15px rgba(240,147,251,0.3);
+                    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
                 ">
-                    <h1 style="margin: 0; font-size: 2.5rem;">{total_submodules}</h1>
-                    <p style="margin: 0.5rem 0 0 0; opacity: 0.9;">Total Submodules</p>
+                    <h1 style="margin: 0; font-size: 2rem; color: #2c3e50; font-family: 'Inter', sans-serif;">
+                        {total_submodules}
+                    </h1>
+                    <p style="margin: 0.5rem 0 0 0; color: #7f8c8d; font-size: 0.9rem; font-weight: 500;">
+                        Total Submodules
+                    </p>
                 </div>
                 """, unsafe_allow_html=True)
             
             with col3:
                 st.markdown(f"""
                 <div style="
-                    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+                    background: #ffffff;
+                    border: 1px solid #e9ecef;
                     padding: 1.5rem;
-                    border-radius: 15px;
                     text-align: center;
-                    color: white;
-                    box-shadow: 0 4px 15px rgba(79,172,254,0.3);
+                    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
                 ">
-                    <h1 style="margin: 0; font-size: 2.5rem;">{len(st.session_state.scraped_pages)}</h1>
-                    <p style="margin: 0.5rem 0 0 0; opacity: 0.9;">Pages Analyzed</p>
+                    <h1 style="margin: 0; font-size: 2rem; color: #2c3e50; font-family: 'Inter', sans-serif;">
+                        {len(st.session_state.scraped_pages)}
+                    </h1>
+                    <p style="margin: 0.5rem 0 0 0; color: #7f8c8d; font-size: 0.9rem; font-weight: 500;">
+                        Pages Analyzed
+                    </p>
                 </div>
                 """, unsafe_allow_html=True)
             
             with col4:
                 st.markdown(f"""
                 <div style="
-                    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+                    background: #ffffff;
+                    border: 1px solid #e9ecef;
                     padding: 1.5rem;
-                    border-radius: 15px;
                     text-align: center;
-                    color: white;
-                    box-shadow: 0 4px 15px rgba(67,233,123,0.3);
+                    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
                 ">
-                    <h1 style="margin: 0; font-size: 2.5rem;">{avg_submodules:.1f}</h1>
-                    <p style="margin: 0.5rem 0 0 0; opacity: 0.9;">Avg Sub/Module</p>
+                    <h1 style="margin: 0; font-size: 2rem; color: #2c3e50; font-family: 'Inter', sans-serif;">
+                        {avg_submodules:.1f}
+                    </h1>
+                    <p style="margin: 0.5rem 0 0 0; color: #7f8c8d; font-size: 0.9rem; font-weight: 500;">
+                        Avg Sub/Module
+                    </p>
                 </div>
                 """, unsafe_allow_html=True)
             
             st.markdown("<br>", unsafe_allow_html=True)
             
-            # Enhanced display options
-            st.markdown("### 🎨 Choose Display Format")
+            # Display format selection
+            st.markdown("### Display Format")
             display_format = st.radio(
                 "Select display format for results",
-                ("🎯 Structured View", "💻 JSON View", "📋 Table View"),
+                ("Structured View", "JSON View", "Table View"),
                 horizontal=True,
-                help="Select how you want to view the extracted modules",
-                label_visibility="collapsed"
+                help="Choose how you want to view the extracted modules"
             )
             
-            if display_format == "🎯 Structured View":
+            if display_format == "Structured View":
                 self.render_structured_results(results)
-            elif display_format == "💻 JSON View":
-                st.markdown("#### 📄 Raw JSON Output")
+            elif display_format == "JSON View":
+                st.markdown("#### Raw JSON Output")
                 st.code(json.dumps(results, indent=2), language='json')
             else:
-                st.markdown("#### 📊 Tabular Data View")
+                st.markdown("#### Tabular Data View")
                 self.render_table_results(results)
     
     def render_structured_results(self, results):
         """Render results in a structured, user-friendly format."""
-        st.markdown("#### 🎯 Module Structure Analysis")
+        st.markdown("#### Module Structure Analysis")
         
         for i, module in enumerate(results):
-            # Create attractive module cards
-            module_color = ["#667eea", "#f093fb", "#4facfe", "#43e97b", "#ff9a9e"][i % 5]
-            
-            with st.expander(f"📁 {module['module']}", expanded=i < 2):
-                # Module header with custom styling
+            # Professional module cards
+            with st.expander(f"{module['module']}", expanded=i < 2):
+                # Module description
                 st.markdown(f"""
                 <div style="
-                    background: linear-gradient(135deg, {module_color}20 0%, {module_color}10 100%);
-                    border-left: 4px solid {module_color};
+                    background: #f8f9fa;
+                    border: 1px solid #e9ecef;
+                    border-left: 4px solid #2c3e50;
                     padding: 1rem;
-                    border-radius: 0 10px 10px 0;
                     margin-bottom: 1rem;
                 ">
-                    <h4 style="margin: 0 0 0.5rem 0; color: #2c3e50;">📋 Module Description</h4>
-                    <p style="margin: 0; color: #34495e; font-size: 1rem; line-height: 1.6;">{module['Description']}</p>
+                    <h4 style="margin: 0 0 0.75rem 0; color: #2c3e50; font-family: 'Inter', sans-serif;">
+                        Module Description
+                    </h4>
+                    <p style="
+                        margin: 0;
+                        color: #495057;
+                        font-size: 1rem;
+                        line-height: 1.6;
+                        font-family: 'Inter', sans-serif;
+                    ">{module['Description']}</p>
                 </div>
                 """, unsafe_allow_html=True)
                 
@@ -866,29 +1087,44 @@ class StreamlitApp:
                 if submodules:
                     st.markdown(f"""
                     <div style="
-                        background: #f8f9fa;
-                        border-radius: 10px;
+                        background: #ffffff;
+                        border: 1px solid #e9ecef;
                         padding: 1rem;
                         margin-top: 1rem;
                     ">
-                        <h4 style="margin: 0 0 1rem 0; color: #495057;">🔗 Submodules ({len(submodules)})</h4>
+                        <h4 style="
+                            margin: 0 0 1rem 0;
+                            color: #495057;
+                            font-family: 'Inter', sans-serif;
+                        ">Submodules ({len(submodules)})</h4>
                     """, unsafe_allow_html=True)
                     
-                    # Display submodules in a grid
+                    # Display submodules in a clean grid
                     sub_cols = st.columns(2)
                     for idx, (sub_name, sub_desc) in enumerate(submodules.items()):
                         with sub_cols[idx % 2]:
                             st.markdown(f"""
                             <div style="
-                                background: white;
+                                background: #ffffff;
                                 border: 1px solid #dee2e6;
-                                border-radius: 8px;
                                 padding: 1rem;
-                                margin-bottom: 0.5rem;
-                                box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+                                margin-bottom: 0.75rem;
+                                box-shadow: 0 1px 3px rgba(0,0,0,0.05);
                             ">
-                                <h5 style="margin: 0 0 0.5rem 0; color: {module_color};">🔹 {sub_name}</h5>
-                                <p style="margin: 0; color: #6c757d; font-size: 0.9rem; line-height: 1.5;">{sub_desc}</p>
+                                <h5 style="
+                                    margin: 0 0 0.5rem 0;
+                                    color: #2c3e50;
+                                    font-family: 'Inter', sans-serif;
+                                    font-size: 0.95rem;
+                                    font-weight: 600;
+                                ">{sub_name}</h5>
+                                <p style="
+                                    margin: 0;
+                                    color: #6c757d;
+                                    font-size: 0.9rem;
+                                    line-height: 1.5;
+                                    font-family: 'Inter', sans-serif;
+                                ">{sub_desc}</p>
                             </div>
                             """, unsafe_allow_html=True)
                     
@@ -898,12 +1134,16 @@ class StreamlitApp:
                     <div style="
                         background: #fff3cd;
                         border: 1px solid #ffeaa7;
-                        border-radius: 8px;
                         padding: 1rem;
                         margin-top: 1rem;
                         text-align: center;
                     ">
-                        <p style="margin: 0; color: #856404;">📝 <em>No submodules identified for this module</em></p>
+                        <p style="
+                            margin: 0;
+                            color: #856404;
+                            font-family: 'Inter', sans-serif;
+                            font-style: italic;
+                        ">No submodules identified for this module</p>
                     </div>
                     """, unsafe_allow_html=True)
     
@@ -973,39 +1213,125 @@ class StreamlitApp:
         st.markdown("<br><br>", unsafe_allow_html=True)
         st.markdown("""
         <div style="
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-            padding: 2rem;
-            border-radius: 20px;
+            background: #2c3e50;
+            color: #ffffff;
+            padding: 3rem 2rem;
             text-align: center;
-            color: white;
             margin-top: 3rem;
-            box-shadow: 0 8px 25px rgba(44,62,80,0.3);
+            border-top: 1px solid #34495e;
         ">
-            <h3 style="margin: 0 0 1rem 0; font-size: 1.5rem;">🤖 PULSEGEN.IO - Module Extraction AI Agent</h3>
-            <p style="margin: 0 0 1rem 0; opacity: 0.9; font-size: 1rem;">
-                Advanced AI-driven system for intelligent documentation analysis and structured data extraction
+            <h3 style="
+                margin: 0 0 1rem 0;
+                font-family: 'Crimson Text', Georgia, serif;
+                font-size: 1.8rem;
+                font-weight: 600;
+                letter-spacing: -0.01em;
+            ">PULSEGEN.IO</h3>
+            <p style="
+                margin: 0 0 2rem 0;
+                font-family: 'Inter', sans-serif;
+                font-size: 1rem;
+                opacity: 0.8;
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
+                line-height: 1.6;
+            ">
+                Advanced AI-driven system for intelligent documentation analysis and structured data extraction.
+                Built with modern technologies for enterprise-grade performance.
             </p>
-            <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1rem;">
+            <div style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 2rem;
+                max-width: 800px;
+                margin: 0 auto;
+            ">
                 <div style="text-align: center;">
-                    <h4 style="margin: 0 0 0.5rem 0; color: #3498db;">🔍</h4>
-                    <p style="margin: 0; font-size: 0.9rem;">Smart Web Crawling</p>
+                    <div style="font-size: 1.2rem; margin-bottom: 0.5rem;">🔍</div>
+                    <h4 style="
+                        margin: 0 0 0.25rem 0;
+                        font-family: 'Inter', sans-serif;
+                        font-size: 0.9rem;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                        letter-spacing: 0.05em;
+                    ">Smart Crawling</h4>
+                    <p style="
+                        margin: 0;
+                        font-size: 0.8rem;
+                        opacity: 0.7;
+                        font-family: 'Inter', sans-serif;
+                    ">Intelligent web scraping</p>
                 </div>
                 <div style="text-align: center;">
-                    <h4 style="margin: 0 0 0.5rem 0; color: #e74c3c;">🤖</h4>
-                    <p style="margin: 0; font-size: 0.9rem;">AI-Powered Analysis</p>
+                    <div style="font-size: 1.2rem; margin-bottom: 0.5rem;">🤖</div>
+                    <h4 style="
+                        margin: 0 0 0.25rem 0;
+                        font-family: 'Inter', sans-serif;
+                        font-size: 0.9rem;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                        letter-spacing: 0.05em;
+                    ">AI Analysis</h4>
+                    <p style="
+                        margin: 0;
+                        font-size: 0.8rem;
+                        opacity: 0.7;
+                        font-family: 'Inter', sans-serif;
+                    ">Advanced NLP processing</p>
                 </div>
                 <div style="text-align: center;">
-                    <h4 style="margin: 0 0 0.5rem 0; color: #f39c12;">📊</h4>
-                    <p style="margin: 0; font-size: 0.9rem;">Structured Results</p>
+                    <div style="font-size: 1.2rem; margin-bottom: 0.5rem;">📊</div>
+                    <h4 style="
+                        margin: 0 0 0.25rem 0;
+                        font-family: 'Inter', sans-serif;
+                        font-size: 0.9rem;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                        letter-spacing: 0.05em;
+                    ">Structured Data</h4>
+                    <p style="
+                        margin: 0;
+                        font-size: 0.8rem;
+                        opacity: 0.7;
+                        font-family: 'Inter', sans-serif;
+                    ">JSON format output</p>
                 </div>
                 <div style="text-align: center;">
-                    <h4 style="margin: 0 0 0.5rem 0; color: #27ae60;">⚡</h4>
-                    <p style="margin: 0; font-size: 0.9rem;">Real-time Processing</p>
+                    <div style="font-size: 1.2rem; margin-bottom: 0.5rem;">⚡</div>
+                    <h4 style="
+                        margin: 0 0 0.25rem 0;
+                        font-family: 'Inter', sans-serif;
+                        font-size: 0.9rem;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                        letter-spacing: 0.05em;
+                    ">Real-time</h4>
+                    <p style="
+                        margin: 0;
+                        font-size: 0.8rem;
+                        opacity: 0.7;
+                        font-family: 'Inter', sans-serif;
+                    ">Instant processing</p>
                 </div>
             </div>
-            <hr style="border: none; height: 1px; background: rgba(255,255,255,0.2); margin: 1.5rem 0;">
-            <p style="margin: 0; font-size: 0.8rem; opacity: 0.7;">
-                Built with Python, OpenAI GPT, Streamlit • Powered by advanced NLP and ML techniques
+            <hr style="
+                border: none;
+                height: 1px;
+                background: #34495e;
+                margin: 2rem auto;
+                max-width: 600px;
+            ">
+            <p style="
+                margin: 0;
+                font-family: 'Inter', sans-serif;
+                font-size: 0.8rem;
+                opacity: 0.6;
+                line-height: 1.5;
+            ">
+                Built with Python, OpenAI GPT, and Streamlit<br>
+                Powered by advanced natural language processing and machine learning
             </p>
         </div>
         """, unsafe_allow_html=True)

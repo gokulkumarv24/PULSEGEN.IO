@@ -1,10 +1,8 @@
-requests==2.31.0
-beautifulsoup4==4.12.2
-streamlit==1.28.1
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+streamlit>=1.28.0
 openai>=1.0.0,<2.0.0
-lxml==4.9.3
-urllib3==2.0.7
-python-dotenv==1.0.0
-argparse
-json5==0.9.14
-validators==0.22.0
+urllib3>=2.0.0
+python-dotenv>=1.0.0
+validators>=0.22.0
+pandas>=1.5.0

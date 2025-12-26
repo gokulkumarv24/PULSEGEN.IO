@@ -32,7 +32,7 @@ class StreamlitApp:
         """Configure Streamlit page settings."""
         st.set_page_config(
             page_title="PULSEGEN.IO - Module Extraction AI",
-            page_icon="🤖",
+            page_icon="⚡",
             layout="wide",
             initial_sidebar_state="expanded"
         )
@@ -42,6 +42,8 @@ class StreamlitApp:
         <style>
         /* Import Professional Typography */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:wght@400;600&display=swap');
+        /* Import Font Awesome for professional icons */
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
         
         /* Global Styles - Clean & Professional */
         .main {
@@ -310,7 +312,9 @@ class StreamlitApp:
                 border-radius: 4px;
                 margin: 0.5rem 0;
             ">
-                <div style="font-size: 1.5rem; margin-bottom: 0.75rem; color: #2c3e50;">🔍</div>
+                <div style="font-size: 1.5rem; margin-bottom: 0.75rem; color: #2c3e50;">
+                    <i class="fas fa-search"></i>
+                </div>
                 <h4 style="margin: 0; font-size: 0.9rem; font-weight: 600; color: #2c3e50;">SMART CRAWLING</h4>
                 <p style="margin: 0.25rem 0 0 0; font-size: 0.8rem; color: #7f8c8d;">Intelligent web scraping</p>
             </div>
@@ -326,7 +330,9 @@ class StreamlitApp:
                 border-radius: 4px;
                 margin: 0.5rem 0;
             ">
-                <div style="font-size: 1.5rem; margin-bottom: 0.75rem; color: #2c3e50;">🤖</div>
+                <div style="font-size: 1.5rem; margin-bottom: 0.75rem; color: #2c3e50;">
+                    <i class="fas fa-brain"></i>
+                </div>
                 <h4 style="margin: 0; font-size: 0.9rem; font-weight: 600; color: #2c3e50;">AI ANALYSIS</h4>
                 <p style="margin: 0.25rem 0 0 0; font-size: 0.8rem; color: #7f8c8d;">Advanced language models</p>
             </div>
@@ -342,7 +348,9 @@ class StreamlitApp:
                 border-radius: 4px;
                 margin: 0.5rem 0;
             ">
-                <div style="font-size: 1.5rem; margin-bottom: 0.75rem; color: #2c3e50;">📊</div>
+                <div style="font-size: 1.5rem; margin-bottom: 0.75rem; color: #2c3e50;">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
                 <h4 style="margin: 0; font-size: 0.9rem; font-weight: 600; color: #2c3e50;">STRUCTURED OUTPUT</h4>
                 <p style="margin: 0.25rem 0 0 0; font-size: 0.8rem; color: #7f8c8d;">JSON format results</p>
             </div>
@@ -358,7 +366,9 @@ class StreamlitApp:
                 border-radius: 4px;
                 margin: 0.5rem 0;
             ">
-                <div style="font-size: 1.5rem; margin-bottom: 0.75rem; color: #2c3e50;">⚡</div>
+                <div style="font-size: 1.5rem; margin-bottom: 0.75rem; color: #2c3e50;">
+                    <i class="fas fa-bolt"></i>
+                </div>
                 <h4 style="margin: 0; font-size: 0.9rem; font-weight: 600; color: #2c3e50;">REAL-TIME</h4>
                 <p style="margin: 0.25rem 0 0 0; font-size: 0.8rem; color: #7f8c8d;">Instant processing</p>
             </div>
@@ -454,9 +464,9 @@ class StreamlitApp:
                     type="password", 
                     help="Enter your OpenAI API key"
                 )
-                st.info("💡 **Note**: Enhanced AI analysis with GPT models")
+                st.info("**Note**: Enhanced AI analysis with GPT models")
             else:
-                st.success("✓ **Default**: Advanced rule-based extraction (no API required)")
+                st.success("**Default**: Advanced rule-based extraction (no API required)")
             
             # Performance information
             st.markdown("""
@@ -595,7 +605,7 @@ class StreamlitApp:
                         margin: 0.5rem 0;
                     ">
                         <h4 style="color: #155724; margin: 0 0 0.25rem 0; font-size: 1rem;">
-                            ✓ Valid URLs ({len(valid_urls)})
+                            <i class="fas fa-check-circle"></i> Valid URLs ({len(valid_urls)})
                         </h4>
                         <p style="color: #155724; margin: 0; font-size: 0.9rem;">Ready for processing</p>
                     </div>
@@ -612,7 +622,7 @@ class StreamlitApp:
                         margin: 0.5rem 0;
                     ">
                         <h4 style="color: #721c24; margin: 0 0 0.25rem 0; font-size: 1rem;">
-                            ✗ Invalid URLs ({len(invalid_urls)})
+                            <i class="fas fa-exclamation-circle"></i> Invalid URLs ({len(invalid_urls)})
                         </h4>
                         <p style="color: #721c24; margin: 0; font-size: 0.9rem;">Please verify format</p>
                     </div>
@@ -825,7 +835,7 @@ class StreamlitApp:
                 st.session_state.scraped_pages = scraped_pages
                 
                 if not scraped_pages:
-                    st.error("❌ No content could be extracted from the provided URLs.")
+                    st.error("No content could be extracted from the provided URLs.")
                     return
                 
                 progress_bar.progress(40)
@@ -915,12 +925,14 @@ class StreamlitApp:
                 padding: 1rem;
                 margin: 1rem 0;
             ">
-                <h4 style="color: #d32f2f; margin: 0 0 0.5rem 0;">❌ Processing Error</h4>
+                <h4 style="color: #d32f2f; margin: 0 0 0.5rem 0;">
+                    <i class="fas fa-exclamation-triangle"></i> Processing Error
+                </h4>
                 <p style="color: #d32f2f; margin: 0;">An error occurred during processing. Please check the details below and try again.</p>
             </div>
             """, unsafe_allow_html=True)
             
-            with st.expander("🔍 Error Details", expanded=True):
+            with st.expander("Error Details", expanded=True):
                 st.error(f"Error: {str(e)}")
                 st.code(traceback.format_exc(), language='python')
             
@@ -1178,7 +1190,7 @@ class StreamlitApp:
     def render_debug_section(self):
         """Render debug information section."""
         if st.session_state.scraped_pages:
-            with st.expander("🔧 Debug Information"):
+            with st.expander("Debug Information"):
                 st.subheader("Scraped Pages")
                 for i, page in enumerate(st.session_state.scraped_pages[:5]):  # Show first 5
                     st.write(f"**Page {i+1}:** {page.get('title', 'No title')}")
@@ -1248,7 +1260,9 @@ class StreamlitApp:
                 margin: 0 auto;
             ">
                 <div style="text-align: center;">
-                    <div style="font-size: 1.2rem; margin-bottom: 0.5rem;">🔍</div>
+                    <div style="font-size: 1.2rem; margin-bottom: 0.5rem;">
+                        <i class="fas fa-search"></i>
+                    </div>
                     <h4 style="
                         margin: 0 0 0.25rem 0;
                         font-family: 'Inter', sans-serif;
@@ -1265,7 +1279,9 @@ class StreamlitApp:
                     ">Intelligent web scraping</p>
                 </div>
                 <div style="text-align: center;">
-                    <div style="font-size: 1.2rem; margin-bottom: 0.5rem;">🤖</div>
+                    <div style="font-size: 1.2rem; margin-bottom: 0.5rem;">
+                        <i class="fas fa-brain"></i>
+                    </div>
                     <h4 style="
                         margin: 0 0 0.25rem 0;
                         font-family: 'Inter', sans-serif;
@@ -1282,7 +1298,9 @@ class StreamlitApp:
                     ">Advanced NLP processing</p>
                 </div>
                 <div style="text-align: center;">
-                    <div style="font-size: 1.2rem; margin-bottom: 0.5rem;">📊</div>
+                    <div style="font-size: 1.2rem; margin-bottom: 0.5rem;">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
                     <h4 style="
                         margin: 0 0 0.25rem 0;
                         font-family: 'Inter', sans-serif;
@@ -1299,7 +1317,9 @@ class StreamlitApp:
                     ">JSON format output</p>
                 </div>
                 <div style="text-align: center;">
-                    <div style="font-size: 1.2rem; margin-bottom: 0.5rem;">⚡</div>
+                    <div style="font-size: 1.2rem; margin-bottom: 0.5rem;">
+                        <i class="fas fa-bolt"></i>
+                    </div>
                     <h4 style="
                         margin: 0 0 0.25rem 0;
                         font-family: 'Inter', sans-serif;
